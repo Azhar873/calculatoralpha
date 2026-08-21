@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Financial Calculators",
+    "icon": "💰",
+    "gradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+    "calculators": [
+      {
+        "name": "Mortgage Calculator",
+        "path": "/mortgage-calculator",
+        "sitemap_index": 1
+      }
+    ]
+  },
+  {
+    "title": "Fitness & Health Calculators",
+    "icon": "💪",
+    "gradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+    "calculators": [
+      {
+        "name": "BMI Calculator",
+        "path": "/bmi-calculator",
+        "sitemap_index": 1
+      }
+    ]
+  },
+  {
+    "title": "Math Calculators",
+    "icon": "🔢",
+    "gradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    "calculators": [
+      {
+        "name": "Scientific Calculator",
+        "path": "/scientific-calculator",
+        "sitemap_index": 1
+      }
+    ]
+  },
+  {
+    "title": "Other Calculators",
+    "icon": "🛠️",
+    "gradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+    "calculators": [
+      {
+        "name": "Age Calculator",
+        "path": "/age-calculator",
+        "sitemap_index": 1
+      }
+    ]
+  }
+]

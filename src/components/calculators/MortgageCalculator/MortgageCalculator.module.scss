@@ -1,0 +1,211 @@
+.mortgageCalculatorContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.mortgageCalculator {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    box-shadow: var(--shadow-xl);
+    width: 100%;
+    max-width: 480px;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+
+    h2 {
+        font-size: clamp(1.4rem, 4vw, 2.22rem);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    p {
+        margin: 0;
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        color: var(--text-secondary);
+        line-height: 1.5;
+    }
+}
+
+.inputGroup {
+    margin-bottom: 20px;
+
+    label {
+        display: block;
+        font-size: clamp(12px, 2vw, 14px);
+        color: var(--text-secondary);
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+
+    input {
+        width: 100%;
+        background: #ffffff;
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 12px 16px;
+        color: var(--text-primary);
+        font-size: clamp(14px, 2vw, 16px);
+        font-family: 'Inter', sans-serif;
+        transition: all 0.2s;
+        box-sizing: border-box;
+
+        &:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+        }
+
+        &::placeholder {
+            color: var(--text-muted);
+        }
+    }
+}
+
+.calculateBtn {
+    width: 100%;
+    background: var(--primary-gradient);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: clamp(14px, 2vw, 16px);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 10px;
+    box-shadow: var(--shadow-md);
+
+    &:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-lg), var(--shadow-glow);
+    }
+
+    &:active {
+        transform: translateY(1px);
+    }
+}
+
+.resultContainer {
+    margin-top: 32px;
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.resultLabel {
+    font-size: clamp(12px, 2vw, 14px);
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.resultValue {
+    font-size: clamp(24px, 6vw, 36px);
+    font-weight: 700;
+    color: var(--accent-purple);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.2;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width: 768px) {
+    .mortgageCalculator {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .header {
+        margin-bottom: 2rem;
+        padding-bottom: 1.25rem;
+    }
+
+    .inputGroup {
+        margin-bottom: 18px;
+    }
+
+    .resultContainer {
+        margin-top: 24px;
+        padding: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mortgageCalculator {
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .header {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+    }
+
+    .inputGroup {
+        margin-bottom: 16px;
+
+        input {
+            padding: 10px 12px;
+        }
+    }
+
+    .calculateBtn {
+        padding: 12px;
+    }
+
+    .resultContainer {
+        margin-top: 20px;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 360px) {
+    .mortgageCalculator {
+        padding: 14px;
+    }
+
+    .inputGroup {
+        input {
+            padding: 9px 10px;
+        }
+    }
+
+    .calculateBtn {
+        padding: 10px;
+    }
+
+    .resultContainer {
+        padding: 14px;
+    }
+}

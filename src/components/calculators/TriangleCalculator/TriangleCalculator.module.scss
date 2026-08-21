@@ -1,0 +1,241 @@
+.triangleCalculator {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.calculatorCard {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-xl);
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+
+    h2 {
+        color: var(--text-primary);
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        font-weight: 700;
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.modeSelect {
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: center;
+
+    select {
+        width: 100%;
+        max-width: 350px;
+        padding: 1rem;
+        font-size: 1.1rem;
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-weight: 600;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%234f46e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 1rem center;
+        background-repeat: no-repeat;
+        background-size: 1.5em 1.5em;
+        padding-right: 3rem;
+
+        &:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+        }
+    }
+}
+
+.inputSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+
+    @media (max-width: 480px) {
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+
+    label {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        font-weight: 600;
+    }
+
+    input {
+        width: 150px;
+        padding: 0.9rem;
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        text-align: center;
+        font-size: 1.1rem;
+        font-family: 'Inter', sans-serif;
+        color: var(--text-primary);
+        background: #ffffff;
+        transition: all 0.2s ease;
+
+        &:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+        }
+
+        &::placeholder {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 480px) {
+            width: 100%;
+        }
+    }
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    justify-content: center;
+
+    button {
+        padding: 1.1rem 2.5rem;
+        border: none;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-width: 140px;
+
+        &:active {
+            transform: translateY(1px);
+        }
+    }
+
+    .calculateBtn {
+        background: var(--primary-gradient);
+        color: white;
+        box-shadow: var(--shadow-md);
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+        }
+    }
+
+    .clearBtn {
+        background-color: var(--bg-secondary);
+        color: var(--text-secondary);
+        border: 1px solid var(--border-color);
+
+        &:hover {
+            background-color: #f1f5f9;
+            color: var(--text-primary);
+            border-color: var(--text-muted);
+        }
+    }
+}
+
+.error {
+    color: #ef4444;
+    background-color: #fee2e2;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 1px solid #fecaca;
+}
+
+.resultSection {
+    margin-top: 1rem;
+    padding: 2.5rem;
+    background: var(--bg-secondary);
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    animation: fadeIn 0.4s ease;
+
+    h3 {
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 800;
+    }
+}
+
+.resultGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+
+.resultItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 1rem;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+
+    .resultLabel {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+    }
+
+    .resultValue {
+        font-size: 2rem;
+        color: var(--accent-purple);
+        font-weight: 800;
+        font-family: 'Inter', sans-serif;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .calculatorCard {
+        padding: 1.5rem;
+    }
+    .inputGroup {
+        width: 100%;
+    }
+}

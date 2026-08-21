@@ -1,0 +1,210 @@
+[
+    {
+        "title": "Financial Calculators",
+        "icon": "💰",
+        "gradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+        "calculators": [
+            {
+                "name": "Mortgage Calculator",
+                "path": "/mortgage-calculator"
+            },
+            {
+                "name": "Loan Calculator",
+                "path": "/loan-calculator"
+            },
+            {
+                "name": "Auto Loan Calculator",
+                "path": "/auto-loan-calculator"
+            },
+            {
+                "name": "Interest Calculator",
+                "path": "/interest-calculator"
+            },
+            {
+                "name": "Payment Calculator",
+                "path": "/payment-calculator"
+            },
+            {
+                "name": "Retirement Calculator",
+                "path": "/retirement-calculator"
+            },
+            {
+                "name": "Amortization Calculator",
+                "path": "/amortization-calculator"
+            },
+            {
+                "name": "Investment Calculator",
+                "path": "/investment-calculator"
+            },
+            {
+                "name": "Inflation Calculator",
+                "path": "/inflation-calculator"
+            },
+            {
+                "name": "Finance Calculator",
+                "path": "/finance-calculator"
+            },
+            {
+                "name": "Income Tax Calculator",
+                "path": "/income-tax-calculator"
+            },
+            {
+                "name": "Compound Interest Calculator",
+                "path": "/compound-interest-calculator"
+            },
+            {
+                "name": "Salary Calculator",
+                "path": "/salary-calculator"
+            },
+            {
+                "name": "Interest Rate Calculator",
+                "path": "/interest-rate-calculator"
+            },
+            {
+                "name": "Sales Tax Calculator",
+                "path": "/sales-tax-calculator"
+            }
+        ]
+    },
+    {
+        "title": "Fitness & Health Calculators",
+        "icon": "💪",
+        "gradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+        "calculators": [
+            {
+                "name": "BMI Calculator",
+                "path": "/bmi-calculator"
+            },
+            {
+                "name": "Calorie Calculator",
+                "path": "/calorie-calculator"
+            },
+            {
+                "name": "Body Fat Calculator",
+                "path": "/body-fat-calculator"
+            },
+            {
+                "name": "BMR Calculator",
+                "path": "/bmr-calculator"
+            },
+            {
+                "name": "Ideal Weight Calculator",
+                "path": "/ideal-weight-calculator"
+            },
+            {
+                "name": "Pace Calculator",
+                "path": "/pace-calculator"
+            },
+            {
+                "name": "Pregnancy Calculator",
+                "path": "/pregnancy-calculator"
+            },
+            {
+                "name": "Pregnancy Conception Calculator",
+                "path": "/pregnancy-conception-calculator"
+            },
+            {
+                "name": "Due Date Calculator",
+                "path": "/due-date-calculator"
+            }
+        ]
+    },
+    {
+        "title": "Math Calculators",
+        "icon": "🔢",
+        "gradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "calculators": [
+            {
+                "name": "Scientific Calculator",
+                "path": "/scientific-calculator"
+            },
+            {
+                "name": "Fraction Calculator",
+                "path": "/fraction-calculator"
+            },
+            {
+                "name": "Percentage Calculator",
+                "path": "/percentage-calculator"
+            },
+            {
+                "name": "Random Number Generator",
+                "path": "/random-number-generator"
+            },
+            {
+                "name": "Triangle Calculator",
+                "path": "/triangle-calculator"
+            },
+            {
+                "name": "Standard Deviation Calculator",
+                "path": "/standard-deviation-calculator"
+            }
+        ]
+    },
+    {
+        "title": "Other Calculators",
+        "icon": "🛠️",
+        "gradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+        "calculators": [
+            {
+                "name": "Age Calculator",
+                "path": "/age-calculator"
+            },
+            {
+                "name": "Date Calculator",
+                "path": "/date-calculator"
+            },
+            {
+                "name": "Time Calculator",
+                "path": "/time-calculator"
+            },
+            {
+                "name": "Hours Calculator",
+                "path": "/hours-calculator"
+            },
+            {
+                "name": "GPA Calculator",
+                "path": "/gpa-calculator"
+            },
+            {
+                "name": "Grade Calculator",
+                "path": "/grade-calculator"
+            },
+            {
+                "name": "Concrete Calculator",
+                "path": "/concrete-calculator"
+            },
+            {
+                "name": "Subnet Calculator",
+                "path": "/subnet-calculator"
+            },
+            {
+                "name": "Password Generator",
+                "path": "/password-generator"
+            },
+            {
+                "name": "Conversion Calculator",
+                "path": "/conversion-calculator"
+            },
+            {
+                "name": "Pipe Weight Calculator",
+                "path": "/pipe-weight-calculator"
+            },
+            {
+                "name": "Pipe Volume Calculator",
+                "path": "/pipe-volume-calculator"
+            },
+            {
+                "name": "Pipe Schedule Lookup",
+                "path": "/pipe-schedule-lookup"
+            },
+            {
+                "name": "Unit Converter",
+                "path": "/unit-converter"
+            },
+            {
+                "name": "Pipe Cost Estimator",
+                "path": "/pipe-cost-estimator"
+            }
+        ]
+    }
+]

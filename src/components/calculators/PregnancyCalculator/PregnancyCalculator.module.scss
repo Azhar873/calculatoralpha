@@ -1,0 +1,182 @@
+.pregnancyCalculatorContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 2rem 1rem;
+}
+
+.pregnancyCalculator {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: var(--shadow-xl);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid var(--border-color);
+    animation: fadeIn 0.4s ease-out;
+
+    .header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+    }
+
+    .controls {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .inputGroup {
+        margin-bottom: 1.5rem;
+
+        label {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            background: #ffffff;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+
+            &:focus {
+                outline: none;
+                border-color: var(--accent-purple);
+                box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+            }
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%234f46e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 1rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            padding-right: 3rem;
+        }
+    }
+
+    .calculateBtn {
+        width: 100%;
+        padding: 1.2rem;
+        background: var(--primary-gradient);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        margin-top: 1rem;
+        box-shadow: var(--shadow-md);
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+        }
+
+        &:active {
+            transform: translateY(1px);
+        }
+    }
+
+    .resultContainer {
+        margin-top: 2.5rem;
+        padding: 2.5rem;
+        background: var(--bg-secondary);
+        border-radius: 20px;
+        border: 1px solid var(--border-color);
+        animation: fadeIn 0.4s ease-out;
+
+        h3 {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        .resultGrid {
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        .resultItem {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            background: #ffffff;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+
+            &:hover {
+                transform: translateX(5px);
+                border-color: var(--accent-purple);
+                box-shadow: var(--shadow-md);
+            }
+
+            .label {
+                color: var(--text-secondary);
+                font-weight: 600;
+                font-size: 0.95rem;
+            }
+
+            .value {
+                color: var(--accent-purple);
+                font-weight: 800;
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 640px) {
+    .pregnancyCalculator {
+        padding: 1.5rem;
+    }
+}

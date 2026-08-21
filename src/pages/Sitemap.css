@@ -1,0 +1,147 @@
+.sitemap-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: calc(100vh - 200px);
+}
+
+.sitemap-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.sitemap-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 15px;
+}
+
+.sitemap-header p {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.sitemap-content {
+  display: grid;
+  gap: 20px;
+}
+
+.sitemap-section {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.sitemap-section:hover {
+  /* transform: translateY(-5px); */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.sitemap-section h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.category-icon {
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+
+.sitemap-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+}
+
+.sitemap-list li {
+  margin: 0;
+}
+
+.sitemap-list a {
+  display: block;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.sitemap-list a:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  transform: translateX(5px);
+  border-color: #667eea;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.sitemap-footer {
+  text-align: center;
+  padding: 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  color: #fff;
+  margin-top: 20px;
+}
+
+.sitemap-footer p {
+  font-size: 1.3rem;
+  margin: 0;
+  color: #fff;
+}
+
+.sitemap-footer strong {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sitemap-header h1 {
+    font-size: 2rem;
+  }
+
+  .sitemap-header p {
+    font-size: 1rem;
+  }
+
+  .sitemap-section {
+    padding: 20px;
+  }
+
+  .sitemap-section h2 {
+    font-size: 1.4rem;
+  }
+
+  .sitemap-list {
+    grid-template-columns: 1fr;
+  }
+
+  .sitemap-footer p {
+    font-size: 1.1rem;
+  }
+
+  .sitemap-footer strong {
+    font-size: 1.3rem;
+  }
+}

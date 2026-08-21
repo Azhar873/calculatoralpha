@@ -1,0 +1,199 @@
+.standardDeviationCalculator {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--border-color);
+
+    .helperText {
+        margin-bottom: 2rem;
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .controls {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+
+        .inputGroup {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+
+            label {
+                font-weight: 600;
+                color: var(--text-primary);
+                font-size: 0.95rem;
+            }
+
+            textarea {
+                width: 100%;
+                padding: 1.25rem;
+                border: 2px solid var(--border-color);
+                border-radius: 16px;
+                font-size: 1rem;
+                transition: all 0.2s;
+                min-height: 140px;
+                resize: vertical;
+                font-family: 'Inter', sans-serif;
+                color: var(--text-primary);
+                background: #ffffff;
+
+                &:focus {
+                    border-color: var(--accent-purple);
+                    outline: none;
+                    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+                }
+
+                &::placeholder {
+                    color: var(--text-muted);
+                }
+            }
+
+            .example {
+                font-size: 0.85rem;
+                color: var(--text-muted);
+                font-weight: 500;
+            }
+        }
+
+        .buttonGroup {
+            display: flex;
+            gap: 1rem;
+
+            button {
+                flex: 1;
+                padding: 1.1rem;
+                border: none;
+                border-radius: 12px;
+                font-weight: 700;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+
+                &.calculateBtn {
+                    background: var(--primary-gradient);
+                    color: white;
+                    box-shadow: var(--shadow-md);
+
+                    &:hover {
+                        transform: translateY(-2px);
+                        box-shadow: var(--shadow-lg), var(--shadow-glow);
+                    }
+
+                    &:active {
+                        transform: translateY(1px);
+                    }
+                }
+
+                &.clearBtn {
+                    background: var(--bg-secondary);
+                    color: var(--text-secondary);
+                    border: 1px solid var(--border-color);
+
+                    &:hover {
+                        background: #f1f5f9;
+                        border-color: var(--text-muted);
+                        color: var(--text-primary);
+                    }
+                }
+            }
+        }
+    }
+
+    .results {
+        background: var(--bg-secondary);
+        border-radius: 24px;
+        padding: 2.5rem;
+        border: 1px solid var(--border-color);
+        animation: fadeIn 0.4s ease-out;
+
+        h3 {
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+            text-align: center;
+        }
+
+        .resultGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+
+            .resultItem {
+                background: #ffffff;
+                padding: 1.5rem;
+                border-radius: 16px;
+                box-shadow: var(--shadow-sm);
+                border: 1px solid var(--border-color);
+                text-align: center;
+
+                .label {
+                    display: block;
+                    font-size: 0.9rem;
+                    color: var(--text-secondary);
+                    margin-bottom: 0.75rem;
+                    font-weight: 600;
+                }
+
+                .value {
+                    display: block;
+                    font-size: 2rem;
+                    font-weight: 800;
+                    color: var(--accent-purple);
+                    font-family: 'Inter', sans-serif;
+                }
+
+                .subLabel {
+                    display: block;
+                    font-size: 0.8rem;
+                    color: var(--text-muted);
+                    margin-top: 0.5rem;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .standardDeviationCalculator {
+        padding: 1.5rem;
+        margin: 20px 16px;
+
+        .controls {
+            .buttonGroup {
+                flex-direction: column;
+            }
+        }
+
+        .results {
+            padding: 1.5rem;
+            .resultGrid {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}
