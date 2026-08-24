@@ -1,43 +1,28 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useCalculators } from "../context/CalculatorsContext";
-import { getAllPages } from "../services/api";
+import { getSitemapEntries } from "../services/api";
 import "./Sitemap.css";
 
 const Sitemap = () => {
-  const { calculatorsData, isLoading } = useCalculators();
-  const [pages, setPages] = useState([]);
-  const [pagesLoading, setPagesLoading] = useState(true);
+  const [sitemapEntries, setSitemapEntries] = useState([]);
+  const [sitemapLoading, setSitemapLoading] = useState(true);
 
   useEffect(() => {
-    const loadPages = async () => {
-      setPagesLoading(true);
+    const loadSitemap = async () => {
+      setSitemapLoading(true);
       try {
-        const pageList = await getAllPages();
-        setPages(Array.isArray(pageList) ? pageList : []);
+        setSitemapEntries(await getSitemapEntries());
       } catch (err) {
-        console.error("Failed to load pages for sitemap:", err);
-        setPages([]);
+        console.error("Failed to load sitemap:", err);
+        setSitemapEntries([]);
       } finally {
-        setPagesLoading(false);
+        setSitemapLoading(false);
       }
     };
 
-    loadPages();
+    loadSitemap();
   }, []);
 
-  const getImageUrl = (imagePath) => {
-    if (!imagePath) return "";
-    if (imagePath.startsWith("http")) return imagePath;
-
-    const apiBase = import.meta.env.VITE_API_URL || "";
-    const baseUrl = apiBase.replace(/\/api\/?$/, "");
-
-    if (imagePath.startsWith("/")) return `${baseUrl}${imagePath}`;
-    if (imagePath.startsWith("uploads/")) return `${baseUrl}/${imagePath}`;
-
-    return `${baseUrl}/${imagePath}`;
-  };
   return (
     <div className="sitemap-container">
       <div className="sitemap-header">
@@ -60,7 +45,7 @@ const Sitemap = () => {
         </div>
 
         {/* All Static Pages */}
-        {pagesLoading ? (
+        {sitemapLoading ? (
           <div
             style={{
               textAlign: "center",
@@ -68,19 +53,18 @@ const Sitemap = () => {
               color: "var(--text-secondary)",
             }}
           >
-            Loading pages...
+            Loading sitemap...
           </div>
         ) : (
-          pages.length > 0 && (
+          sitemapEntries.filter((entry) => entry.url_type === "page").length > 0 && (
             <div className="sitemap-section">
               <h2>Other Pages</h2>
               <ul className="sitemap-list">
-                {pages
-                  .filter((page) => page.slug)
-                  .sort((a, b) => a.title.localeCompare(b.title))
-                  .map((page) => (
-                    <li key={page.id || page.slug}>
-                      <Link to={`/${page.slug}`}>{page.title || page.slug}</Link>
+                {sitemapEntries
+                  .filter((entry) => entry.url_type === "page" && entry.slug)
+                  .map((entry) => (
+                    <li key={entry.id}>
+                      <Link to={`/${entry.slug}`}>{entry.slug}</Link>
                     </li>
                   ))}
               </ul>
@@ -88,51 +72,38 @@ const Sitemap = () => {
           )
         )}
 
-        {/* All Calculator Categories */}
-        {isLoading ? (
-          <div
-            style={{
-              textAlign: "center",
-              padding: "40px",
-              color: "var(--text-secondary)",
-            }}
-          >
-            Loading calculators...
+        {sitemapLoading ? null : (
+          <div className="sitemap-section">
+            <h2>Categories</h2>
+            <ul className="sitemap-list">
+              {sitemapEntries
+                .filter((entry) => entry.url_type === "category" && entry.slug)
+                .map((entry) => (
+                  <li key={entry.id}>
+                    <Link to={`/${entry.slug}`}>{entry.slug}</Link>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        )}
+
+        {sitemapLoading ? (
+          <div style={{ textAlign: "center", padding: "40px", color: "var(--text-secondary)" }}>
+            Loading sitemap...
           </div>
         ) : (
-          calculatorsData.map((category, index) => (
-            <div key={index} className="sitemap-section">
-              <h2>
-                <span className="category-icon">
-                  {category.icon ? (
-                    <img
-                      src={getImageUrl(category.icon)}
-                      alt={category.title}
-                      style={{
-                        width: "28px",
-                        height: "28px",
-                        objectFit: "contain",
-                        verticalAlign: "middle",
-                      }}
-                    />
-                  ) : (
-                    "📁"
-                  )}
-                </span>
-                {category.title}
-              </h2>
-              <ul className="sitemap-list">
-                {category.calculators &&
-                  [...category.calculators]
-                    .sort((a, b) => a.name.localeCompare(b.name))
-                    .map((calculator, calcIndex) => (
-                      <li key={calcIndex}>
-                        <Link to={calculator.path}>{calculator.name}</Link>
-                      </li>
-                    ))}
-              </ul>
-            </div>
-          ))
+          <div className="sitemap-section">
+            <h2>Calculators</h2>
+            <ul className="sitemap-list">
+              {sitemapEntries
+                .filter((entry) => entry.url_type === "calculator" && entry.slug)
+                .map((entry) => (
+                  <li key={entry.id}>
+                    <Link to={`/${entry.slug}`}>{entry.slug}</Link>
+                  </li>
+                ))}
+            </ul>
+          </div>
         )}
 
         {/* Total Count */}
@@ -140,14 +111,7 @@ const Sitemap = () => {
           <p>
             Total Calculators:{" "}
             <strong>
-              {calculatorsData
-                ? calculatorsData.reduce(
-                    (total, category) =>
-                      total +
-                      (category.calculators ? category.calculators.length : 0),
-                    0,
-                  )
-                : 0}
+              {sitemapEntries.filter((entry) => entry.url_type === "calculator").length}
             </strong>
           </p>
         </div>
