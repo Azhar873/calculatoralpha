@@ -69,6 +69,11 @@ export async function getAllPages() {
   return [];
 }
 
+export async function getSitemapEntries() {
+  const data = await fetchData("/sitemap");
+  return Array.isArray(data) ? data : [];
+}
+
 export async function submitContactForm(payload) {
   return await fetchData("/contact", {
     method: "POST",
