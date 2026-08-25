@@ -2,7 +2,7 @@
     display: flex;
     gap: 20px;
     max-width: 640px;
-    margin: 40px auto;
+    // margin: 40px auto;
     align-items: flex-start;
 }
 
@@ -12,7 +12,7 @@
     border-radius: 20px;
     padding: 16px;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    box-shadow: var(--shadow-xl);
+    // box-shadow: var(--shadow-xl);
     border: 1px solid var(--border-color);
 }
 
@@ -22,7 +22,7 @@
     border-radius: 20px;
     padding: 16px;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    box-shadow: var(--shadow-xl);
+    // box-shadow: var(--shadow-xl);
     border: 1px solid var(--border-color);
     max-height: 500px;
     display: flex;

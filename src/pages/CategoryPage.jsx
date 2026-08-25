@@ -72,8 +72,51 @@ const CategoryPage = () => {
 
   if (loading) {
     return (
-      <div style={{ padding: "2rem", textAlign: "center" }}>
-        <p>Loading category...</p>
+      <div
+        style={{
+        padding: "2rem",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "60vh",
+        }}
+      >
+        <style>{`
+        .page-view-loader {
+          width: 50px;
+          aspect-ratio: 1;
+          display: grid;
+          border: 4px solid #1e1b4b;
+          border-radius: 50%;
+          border-color: #fff #1e1b4b;
+          animation: l16 1s infinite linear;
+        }
+        .page-view-loader::before,
+        .page-view-loader::after {
+          content: "";
+          grid-area: 1/1;
+          margin: 2px;
+          border: inherit;
+          border-radius: 50%;
+        }
+        .page-view-loader::before {
+          border-color: #5844E7 #1e1b4b;
+          animation: inherit;
+          animation-duration: 0.5s;
+          animation-direction: reverse;
+        }
+        .page-view-loader::after {
+          margin: 8px;
+        }
+        @keyframes l16 {
+          100% {
+            transform: rotate(1turn);
+          }
+        }
+        `}</style>
+        <div className="page-view-loader" aria-label="Loading" />
+        <p style={{ marginTop: "1rem", color: "#1e1b4b" }}>Loading page...</p>
       </div>
     );
   }
@@ -138,9 +181,21 @@ const CategoryPage = () => {
         description={pageDescription}
         keywords={pageKeywords}
       />
-
-      <div style={{ marginBottom: "2rem" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+      <section
+        style={{
+          marginBlock: "2rem",
+          padding: "1.5rem",
+          // borderRadius: 16,
+          background: "white",
+          border: "1px solid #ececec",
+          lineHeight: 1.75,
+          color: "#596579",
+        }}
+      >
+        {/* <h2 style={{ margin: "0 0 1rem", color: "#1e1b4b" }}>
+          Description
+        </h2> */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.75rem", marginBottom: "1rem" }}>
           {category.icon && isImageIcon(category.icon) && (
             <img
               src={getIconUrl(category.icon)}
@@ -153,9 +208,14 @@ const CategoryPage = () => {
               {category.icon}
             </span>
           )}
-          <h1 style={{ margin: 0 }}>{category.name}</h1>
+          <h1 style={{ margin: 0, color: "#1e1b4b" }}>{category.name}</h1>
         </div>
-      </div>
+        {category.description ? (
+          renderDescription(category.description, "categoryDescription")
+        ) : (
+          <p>No description available.</p>
+        )}
+      </section>
 
       {Array.isArray(category.calculators) &&
       category.calculators.length > 0 ? (
@@ -202,27 +262,6 @@ const CategoryPage = () => {
       ) : (
         <p>No calculators found in this category.</p>
       )}
-
-      <section
-        style={{
-          marginTop: "2rem",
-          padding: "1.5rem",
-          borderRadius: 16,
-          background: "white",
-          border: "1px solid #ececec",
-          lineHeight: 1.75,
-          color: "#596579",
-        }}
-      >
-        <h2 style={{ margin: "0 0 1rem", color: "#1e1b4b" }}>
-          Description
-        </h2>
-        {category.description ? (
-          renderDescription(category.description, "categoryDescription")
-        ) : (
-          <p>No description available.</p>
-        )}
-      </section>
     </div>
   );
 };

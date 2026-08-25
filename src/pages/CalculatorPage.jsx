@@ -170,6 +170,16 @@ const CalculatorPage = ({ calculatorSlug: propCalculatorSlug }) => {
       .slice(0, 5);
   }, [calculatorsData, calculator, matchesCalculatorSlug, resolvedSlug]);
 
+  const currentCategory = useMemo(
+    () =>
+      calculatorsData.find((category) =>
+        (category.calculators || []).some((calc) =>
+          matchesCalculatorSlug(calc, resolvedSlug?.replace(/^\//, "")),
+        ),
+      ),
+    [calculatorsData, matchesCalculatorSlug, resolvedSlug],
+  );
+
   if (isLoading) {
     return (
       <div
@@ -236,6 +246,8 @@ const CalculatorPage = ({ calculatorSlug: propCalculatorSlug }) => {
   }
 
   const CalculatorComponent = calculatorComponents[calculator.slug];
+  const categorySlug = calculator.category_slug || calculator.category;
+  const categoryName = calculator.category_name || categorySlug;
   const pageTitle = calculator.meta_title || calculator.name;
   const pageDescription =
     calculator.meta_description ||
@@ -246,73 +258,84 @@ const CalculatorPage = ({ calculatorSlug: propCalculatorSlug }) => {
 
   return (
     <div className="calculator-page">
+      <nav className="calculator-page__breadcrumb" aria-label="Breadcrumb">
+        <Link to="/">Home</Link>
+        <span aria-hidden="true">/</span>
+        {categorySlug ? (
+          <>
+            <Link to={`/${categorySlug}`}>{categoryName}</Link>
+            <span aria-hidden="true">/</span>
+          </>
+        ) : null}
+        <span aria-current="page">{calculator.name}</span>
+      </nav>
+
       <SEO
         title={pageTitle}
         description={pageDescription}
         keywords={pageKeywords}
       />
 
-      <div className="calculator-page__header">
-        {calculator.icon && (
-          <img
-            src={getIconUrl(calculator.icon)}
-            alt=""
-            className="calculator-page__icon"
-          />
-        )}
-        <h1 style={{ display: "none" }}>
-          {calculator.heading || calculator.name}
-        </h1>
-        {/* <p className="calculator-page__subtitle">{calculator.name}</p> */}
-      </div>
+      <div className="calculator-page__layout">
+        <aside className="calculator-page__sidebar">
+          {relatedCalculators.length > 0 && (
+            <section className="calculator-page__sidebar-section">
+              <h2>Related Calculators</h2>
+              <ul>
+                {relatedCalculators.map((related) => (
+                  <li key={related.path || related.slug}>
+                    <Link to={getCalculatorUrl(related)}>
+                      {related.name || related.title || related.slug}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
 
-      <div className="calculator-page__calculator-container">
-        {CalculatorComponent ? (
-          <CalculatorComponent />
-        ) : (
-          <div className="calculator-page__status">
-            Calculator component not available for this slug.
+          <section className="calculator-page__sidebar-section">
+            <h2>Categories</h2>
+            <ul className="calculator-page__category-list">
+              {calculatorsData.map((category) => (
+                <li
+                  key={category.slug}
+                  className={category.slug === currentCategory?.slug ? "active" : ""}
+                >
+                  <Link to={`/${category.slug}`}>
+                    {category.icon && (
+                      <img src={getIconUrl(category.icon)} alt="" />
+                    )}
+                    <span>{category.title || category.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </aside>
+
+        <main className="calculator-page__main">
+          <div className="calculator-page__calculator-container">
+            {CalculatorComponent ? (
+              <CalculatorComponent />
+            ) : (
+              <div className="calculator-page__status">
+                Calculator component not available for this slug.
+              </div>
+            )}
           </div>
-        )}
-      </div>
-
-      <div className="calculator-page__description">
-        <h2>Description</h2>
-        {calculator.description ? (
-          <div
-            className="calculator-page__description-content"
-            dangerouslySetInnerHTML={{ __html: calculator.description }}
-          />
-        ) : (
-          <p>No description available.</p>
-        )}
-      </div>
-
-      {relatedCalculators.length > 0 && (
-        <div className="calculator-page__related" style={{ marginTop: "30px" }}>
-          <h2>Related Calculators</h2>
-          <div
-            className="calculator-page__related-list"
-            style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}
-          >
-            {relatedCalculators.slice(0, 5).map((related) => (
-              <Link
-                key={related.path || related.slug}
-                to={getCalculatorUrl(related)}
-                className="calculator-page__related-card"
-                style={{
-                  backgroundColor: "white",
-                  padding: "8px 15px",
-                  textAlign: "center",
-                  borderRadius: "20px",
-                }}
-              >
-                <span>{related.name || related.title || related.slug}</span>
-              </Link>
-            ))}
+          <div className="calculator-page__description">
+            <h2>Description</h2>
+            {calculator.description ? (
+              <div
+                className="calculator-page__description-content"
+                dangerouslySetInnerHTML={{ __html: calculator.description }}
+              />
+            ) : (
+              <p>No description available.</p>
+            )}
           </div>
-        </div>
-      )}
+        </main>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,34 @@
 .calculator-page {
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
+}
+
+.calculator-page__breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 2rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.calculator-page__breadcrumb a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.calculator-page__breadcrumb a:hover,
+.calculator-page__breadcrumb a:focus-visible {
+  color: var(--primary-color, #5844e7);
+  text-decoration: underline;
+}
+
+.calculator-page__breadcrumb [aria-current="page"] {
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 .calculator-page__status {
@@ -13,6 +40,73 @@
 
 .calculator-page__header {
   margin-bottom: 1.5rem;
+}
+
+.calculator-page__layout {
+  display: grid;
+  grid-template-columns: 305px minmax(0, 1fr) ;
+  gap: 2rem;
+  align-items: start;
+}
+
+.calculator-page__main {
+  min-width: 0;
+}
+
+.calculator-page__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.calculator-page__sidebar-section {
+  overflow: hidden;
+  border: 1px solid var(--border-color, #d9e1e8);
+  border-radius: 8px;
+  background: var(--surface-color, #ffffff);
+}
+
+.calculator-page__sidebar-section h2 {
+  margin: 0;
+  padding: 0.95rem 1rem;
+  background: var(--primary-color, #5844e7);
+  color: var(--primary-contrast, #ffffff);
+  font-size: 1rem;
+}
+
+.calculator-page__sidebar-section ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.calculator-page__sidebar-section li {
+  border-top: 1px solid var(--border-color, #d9e1e8);
+}
+
+.calculator-page__sidebar-section li a {
+  display: block;
+  padding: 0.8rem 1rem;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.calculator-page__sidebar-section li a:hover,
+.calculator-page__sidebar-section li.active a {
+  background: var(--surface-muted, #f1f7f7);
+  color: var(--primary-color, #5844e7);
+}
+
+.calculator-page__category-list li a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.calculator-page__category-list img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
 }
 
 .calculator-page__icon {
@@ -75,6 +169,10 @@
 }
 
 @media (max-width: 840px) {
+  .calculator-page__layout {
+    grid-template-columns: 1fr;
+  }
+
   .calculator-page__detail-grid {
     grid-template-columns: 1fr;
   }
