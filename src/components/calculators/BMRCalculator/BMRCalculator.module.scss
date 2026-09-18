@@ -1,19 +1,20 @@
 .bmrCalculatorContainer {
     display: flex;
-    justify-content: center;
-    padding: 20px;
+    // justify-content: center;
+    // padding: 20px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid var(--border-color);
 }
 
 .bmrCalculator {
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 24px;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    box-shadow: var(--shadow-xl);
+    // box-shadow: var(--shadow-xl);
     width: 100%;
-    max-width: 550px;
+    max-width: 500px;
     color: var(--text-primary);
-    border: 1px solid var(--border-color);
+    margin: 0 auto;
 }
 
 .header {
@@ -170,7 +171,7 @@
 
 .resultValue {
     font-size: 48px;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--accent-purple);
     font-family: 'Inter', sans-serif;
 

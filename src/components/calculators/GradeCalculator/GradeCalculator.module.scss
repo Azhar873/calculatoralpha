@@ -1,17 +1,20 @@
 .gradeCalculatorContainer {
     display: flex;
-    justify-content: center;
-    width: 100%;
+    // justify-content: center;
+    // padding: 20px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid var(--border-color);
 }
 
 .gradeCalculator {
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 2.5rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    // box-shadow: var(--shadow-xl);
     width: 100%;
-    max-width: 800px;
-    box-shadow: var(--shadow-xl);
-    border: 1px solid var(--border-color);
+    max-width: 500px;
+    color: var(--text-primary);
+    margin: 0 auto;
 
     .header {
         text-align: center;
@@ -23,7 +26,7 @@
             font-size: 2.22rem;
             color: var(--text-primary);
             margin-bottom: 0.5rem;
-            font-weight: 700;
+            font-weight: 600;
             background: var(--primary-gradient);
             -webkit-background-clip: text;
             background-clip: text;
@@ -161,7 +164,7 @@
             border: 1px solid var(--border-color);
             border-radius: 14px;
             font-size: 1rem;
-            font-weight: 700;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
 
@@ -195,7 +198,7 @@
 
         .resultValue {
             font-size: 4rem;
-            font-weight: 800;
+            font-weight: 600;
             color: var(--accent-purple);
             line-height: 1;
             margin-bottom: 0.75rem;

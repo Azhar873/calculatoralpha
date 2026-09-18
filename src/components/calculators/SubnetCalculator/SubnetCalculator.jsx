@@ -79,80 +79,82 @@ const SubnetCalculator = () => {
     };
 
     return (
-        <div className={styles.subnetCalculator}>
-            <div className={styles.header}>
-                <h2>Subnet Calculator</h2>
-                <p>Lookup subnet masks, network addresses, and usable host ranges</p>
-            </div>
-
-            <div className={styles.inputGroup}>
-                <label>IP Address</label>
-                <input
-                    type="text"
-                    value={ipAddress}
-                    onChange={(e) => setIpAddress(e.target.value)}
-                    placeholder="e.g. 192.168.1.1"
-                />
-            </div>
-
-            <div className={styles.inputGroup}>
-                <label>CIDR / Prefix Size</label>
-                <input
-                    type="number"
-                    value={cidr}
-                    onChange={(e) => setCidr(e.target.value)}
-                    placeholder="e.g. 24"
-                    min="0"
-                    max="32"
-                />
-            </div>
-
-            {error && (
-                <div className={styles.error}>
-                    {error}
+        <div className={styles.subnetCalculatorContainer}>
+            <div className={styles.subnetCalculator}>
+                <div className={styles.header}>
+                    <h2>Subnet Calculator</h2>
+                    <p>Lookup subnet masks, network addresses, and usable host ranges</p>
                 </div>
-            )}
 
-            <div className={styles.buttonGroup}>
-                <button onClick={calculateSubnet} className={styles.calculateBtn}>
-                    Calculate
-                </button>
-                <button onClick={resetCalculator} className={styles.resetBtn}>
-                    Reset
-                </button>
-            </div>
+                <div className={styles.inputGroup}>
+                    <label>IP Address</label>
+                    <input
+                        type="text"
+                        value={ipAddress}
+                        onChange={(e) => setIpAddress(e.target.value)}
+                        placeholder="e.g. 192.168.1.1"
+                    />
+                </div>
 
-            {result && (
-                <div className={styles.resultContainer}>
-                    <h3>Results</h3>
-                    <div className={styles.resultList}>
-                        <div className={styles.resultRow}>
-                            <span className={styles.label}>Network Address:</span>
-                            <span className={styles.value}>{result.network}</span>
-                        </div>
-                        <div className={styles.resultRow}>
-                            <span className={styles.label}>Subnet Mask:</span>
-                            <span className={styles.value}>{result.mask}</span>
-                        </div>
-                        <div className={styles.resultRow}>
-                            <span className={styles.label}>Broadcast Address:</span>
-                            <span className={styles.value}>{result.broadcast}</span>
-                        </div>
-                        <div className={styles.resultRow}>
-                            <span className={styles.label}>Usable Host Range:</span>
-                            <span className={styles.value}>{result.range}</span>
-                        </div>
-                        <div className={styles.resultRow}>
-                            <span className={styles.label}>Total Usable Hosts:</span>
-                            <span className={styles.value}>{result.hosts.toLocaleString()}</span>
-                        </div>
-                        <div className={styles.resultRow}>
-                            <span className={styles.label}>CIDR Notation:</span>
-                            <span className={styles.value}>{result.ip}{result.cidr}</span>
+                <div className={styles.inputGroup}>
+                    <label>CIDR / Prefix Size</label>
+                    <input
+                        type="number"
+                        value={cidr}
+                        onChange={(e) => setCidr(e.target.value)}
+                        placeholder="e.g. 24"
+                        min="0"
+                        max="32"
+                    />
+                </div>
+
+                {error && (
+                    <div className={styles.error}>
+                        {error}
+                    </div>
+                )}
+
+                <div className={styles.buttonGroup}>
+                    <button onClick={calculateSubnet} className={styles.calculateBtn}>
+                        Calculate
+                    </button>
+                    <button onClick={resetCalculator} className={styles.resetBtn}>
+                        Reset
+                    </button>
+                </div>
+
+                {result && (
+                    <div className={styles.resultContainer}>
+                        <h3>Results</h3>
+                        <div className={styles.resultList}>
+                            <div className={styles.resultRow}>
+                                <span className={styles.label}>Network Address:</span>
+                                <span className={styles.value}>{result.network}</span>
+                            </div>
+                            <div className={styles.resultRow}>
+                                <span className={styles.label}>Subnet Mask:</span>
+                                <span className={styles.value}>{result.mask}</span>
+                            </div>
+                            <div className={styles.resultRow}>
+                                <span className={styles.label}>Broadcast Address:</span>
+                                <span className={styles.value}>{result.broadcast}</span>
+                            </div>
+                            <div className={styles.resultRow}>
+                                <span className={styles.label}>Usable Host Range:</span>
+                                <span className={styles.value}>{result.range}</span>
+                            </div>
+                            <div className={styles.resultRow}>
+                                <span className={styles.label}>Total Usable Hosts:</span>
+                                <span className={styles.value}>{result.hosts.toLocaleString()}</span>
+                            </div>
+                            <div className={styles.resultRow}>
+                                <span className={styles.label}>CIDR Notation:</span>
+                                <span className={styles.value}>{result.ip}{result.cidr}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )}
+            </div>
         </div>
     );
 };

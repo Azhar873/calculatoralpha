@@ -1,19 +1,20 @@
 .concreteCalculatorContainer {
     display: flex;
-    justify-content: center;
-    padding: 20px;
-}
-
-.concreteCalculator {
+    // justify-content: center;
+    // padding: 20px;
     background: #ffffff;
     border-radius: 20px;
     padding: 32px;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    box-shadow: var(--shadow-xl);
-    width: 100%;
-    max-width: 600px;
-    color: var(--text-primary);
     border: 1px solid var(--border-color);
+}
+
+.concreteCalculator {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    // box-shadow: var(--shadow-xl);
+    width: 100%;
+    max-width: 500px;
+    color: var(--text-primary);
+    margin: 0 auto;
 }
 
 .header {
@@ -24,7 +25,7 @@
 
     h2 {
         font-size: 2.22rem;
-        font-weight: 800;
+        font-weight: 600;
         margin-bottom: 0.5rem;
         background: var(--primary-gradient);
         -webkit-background-clip: text;
@@ -89,7 +90,7 @@
     border-radius: 12px;
     padding: 14px;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: var(--shadow-md);
@@ -134,7 +135,7 @@
     h3 {
         margin: 0 0 20px 0;
         font-size: 14px;
-        font-weight: 800;
+        font-weight: 600;
         color: var(--text-secondary);
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -169,7 +170,7 @@
 
     .resultValue {
         font-size: 20px;
-        font-weight: 800;
+        font-weight: 600;
         color: var(--text-primary);
         font-family: 'Inter', sans-serif;
     }

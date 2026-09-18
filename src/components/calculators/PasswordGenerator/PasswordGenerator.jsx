@@ -39,84 +39,86 @@ const PasswordGenerator = () => {
     };
 
     return (
-        <div className={styles.passwordGenerator}>
-            <div className={styles.header}>
-                <h2>Password Generator</h2>
-                <p>Create strong and secure passwords instantly</p>
-            </div>
+        <div className={styles.passwordGeneratorContainer}>
+            <div className={styles.passwordGenerator}>
+                <div className={styles.header}>
+                    <h2>Password Generator</h2>
+                    <p>Create strong and secure passwords instantly</p>
+                </div>
 
-            <div className={styles.passwordDisplay}>
-                <input
-                    type="text"
-                    value={password}
-                    readOnly
-                    placeholder="Click Generate Below"
-                />
+                <div className={styles.passwordDisplay}>
+                    <input
+                        type="text"
+                        value={password}
+                        readOnly
+                        placeholder="Click Generate Below"
+                    />
+                    <button
+                        onClick={copyToClipboard}
+                        className={`${styles.copyBtn} ${copied ? styles.copied : ''}`}
+                    >
+                        {copied ? 'Copied!' : 'Copy'}
+                    </button>
+                </div>
+
+                <div className={styles.optionsSection}>
+                    <div className={styles.lengthControl}>
+                        <div className={styles.lengthHeader}>
+                            <label>Password Length</label>
+                            <span className={styles.lengthValue}>{length}</span>
+                        </div>
+                        <input
+                            type="range"
+                            min="4"
+                            max="64"
+                            value={length}
+                            onChange={(e) => setLength(parseInt(e.target.value))}
+                        />
+                    </div>
+
+                    <div className={styles.checkboxGrid}>
+                        <label className={styles.checkboxItem}>
+                            <input
+                                type="checkbox"
+                                checked={includeUppercase}
+                                onChange={(e) => setIncludeUppercase(e.target.checked)}
+                            />
+                            <span>Uppercase (A-Z)</span>
+                        </label>
+                        <label className={styles.checkboxItem}>
+                            <input
+                                type="checkbox"
+                                checked={includeLowercase}
+                                onChange={(e) => setIncludeLowercase(e.target.checked)}
+                            />
+                            <span>Lowercase (a-z)</span>
+                        </label>
+                        <label className={styles.checkboxItem}>
+                            <input
+                                type="checkbox"
+                                checked={includeNumbers}
+                                onChange={(e) => setIncludeNumbers(e.target.checked)}
+                            />
+                            <span>Numbers (0-9)</span>
+                        </label>
+                        <label className={styles.checkboxItem}>
+                            <input
+                                type="checkbox"
+                                checked={includeSymbols}
+                                onChange={(e) => setIncludeSymbols(e.target.checked)}
+                            />
+                            <span>Symbols (!@#$)</span>
+                        </label>
+                    </div>
+                </div>
+
                 <button
-                    onClick={copyToClipboard}
-                    className={`${styles.copyBtn} ${copied ? styles.copied : ''}`}
+                    onClick={generatePassword}
+                    className={styles.generateBtn}
                 >
-                    {copied ? 'Copied!' : 'Copy'}
+                    Generate Password
                 </button>
             </div>
-
-            <div className={styles.optionsSection}>
-                <div className={styles.lengthControl}>
-                    <div className={styles.lengthHeader}>
-                        <label>Password Length</label>
-                        <span className={styles.lengthValue}>{length}</span>
-                    </div>
-                    <input
-                        type="range"
-                        min="4"
-                        max="64"
-                        value={length}
-                        onChange={(e) => setLength(parseInt(e.target.value))}
-                    />
-                </div>
-
-                <div className={styles.checkboxGrid}>
-                    <label className={styles.checkboxItem}>
-                        <input
-                            type="checkbox"
-                            checked={includeUppercase}
-                            onChange={(e) => setIncludeUppercase(e.target.checked)}
-                        />
-                        <span>Uppercase (A-Z)</span>
-                    </label>
-                    <label className={styles.checkboxItem}>
-                        <input
-                            type="checkbox"
-                            checked={includeLowercase}
-                            onChange={(e) => setIncludeLowercase(e.target.checked)}
-                        />
-                        <span>Lowercase (a-z)</span>
-                    </label>
-                    <label className={styles.checkboxItem}>
-                        <input
-                            type="checkbox"
-                            checked={includeNumbers}
-                            onChange={(e) => setIncludeNumbers(e.target.checked)}
-                        />
-                        <span>Numbers (0-9)</span>
-                    </label>
-                    <label className={styles.checkboxItem}>
-                        <input
-                            type="checkbox"
-                            checked={includeSymbols}
-                            onChange={(e) => setIncludeSymbols(e.target.checked)}
-                        />
-                        <span>Symbols (!@#$)</span>
-                    </label>
-                </div>
-            </div>
-
-            <button
-                onClick={generatePassword}
-                className={styles.generateBtn}
-            >
-                Generate Password
-            </button>
         </div>
     );
 };

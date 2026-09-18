@@ -1,24 +1,26 @@
 .percentageCalculator {
     display: flex;
     // justify-content: center;
-    // padding: 2rem 0;
+    // padding: 20px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid var(--border-color);
 }
 
 .calculatorCard {
-    background: #ffffff;
-    padding: 2.5rem;
-    border-radius: 20px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     // box-shadow: var(--shadow-xl);
     width: 100%;
-    max-width: 600px;
-    text-align: center;
-    border: 1px solid var(--border-color);
+    max-width: 500px;
+    color: var(--text-primary);
+    margin: 0 auto;
 
         h2 {
             font-size: 2.22rem;
             color: var(--text-primary);
             margin-bottom: 0.5rem;
-            font-weight: 700;
+            font-weight: 600;
             background: var(--primary-gradient);
             -webkit-background-clip: text;
             background-clip: text;
@@ -120,7 +122,7 @@
         border: none;
         border-radius: 12px;
         font-size: 1rem;
-        font-weight: 700;
+        font-weight: 600;
         cursor: pointer;
         transition: all 0.2s ease;
         min-width: 140px;
@@ -179,7 +181,7 @@
         font-size: 0.9rem;
         text-transform: uppercase;
         letter-spacing: 2px;
-        font-weight: 800;
+        font-weight: 600;
     }
 }
 
@@ -192,7 +194,7 @@
     .resultValue {
         font-size: 3rem;
         color: var(--accent-purple);
-        font-weight: 800;
+        font-weight: 600;
         font-family: 'Inter', sans-serif;
         line-height:1;
     }

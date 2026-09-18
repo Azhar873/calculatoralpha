@@ -6,8 +6,30 @@ import {
   createAdminCalculator,
   updateAdminCalculator,
 } from "../../services/adminApi";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import {
+  ClassicEditor,
+  Essentials,
+  Paragraph,
+  Bold,
+  Italic,
+  Underline,
+  Link,
+  Heading,
+  List,
+  BlockQuote,
+  CodeBlock,
+  Table,
+  TableToolbar,
+  Image,
+  ImageToolbar,
+  ImageUpload,
+  MediaEmbed,
+  SourceEditing,
+} from "ckeditor5";
+
+import "ckeditor5/ckeditor5.css";
+import "./EditCalculator.css";
 
 const EditCalculator = () => {
   const { id } = useParams();
@@ -246,18 +268,77 @@ const EditCalculator = () => {
 
             <div className="admin-form-group">
               <label>Calculator descriptions</label>
-              <div
-                style={{
-                  border: "1px solid #ddd",
-                  borderRadius: "4px",
-                  background: "white",
-                }}
-              >
-                <ReactQuill
-                  theme="snow"
-                  value={formData.description}
-                  onChange={handleEditorChange}
-                  style={{ height: "300px", marginBottom: "50px" }}
+              <div className="calculator-description-editor">
+                <CKEditor
+                  editor={ClassicEditor}
+                  data={formData.description || ""}
+                  config={{
+                    licenseKey:
+                      import.meta.env.VITE_CKEDITOR_LICENSE_KEY || "GPL",
+
+                    plugins: [
+                      Essentials,
+                      Paragraph,
+                      Bold,
+                      Italic,
+                      Underline,
+                      Link,
+                      Heading,
+                      List,
+                      BlockQuote,
+                      CodeBlock,
+                      Table,
+                      TableToolbar,
+                      Image,
+                      ImageToolbar,
+                      ImageUpload,
+                      MediaEmbed,
+                      SourceEditing,
+                    ],
+
+                    toolbar: [
+                      "undo",
+                      "redo",
+                      "|",
+                      "heading",
+                      "|",
+                      "bold",
+                      "italic",
+                      "underline",
+                      "|",
+                      "link",
+                      "bulletedList",
+                      "numberedList",
+                      "|",
+                      "blockQuote",
+                      "codeBlock",
+                      "|",
+                      "insertTable",
+                      "mediaEmbed",
+                      "|",
+                      "sourceEditing",
+                    ],
+
+                    table: {
+                      contentToolbar: [
+                        "tableColumn",
+                        "tableRow",
+                        "mergeTableCells",
+                      ],
+                    },
+
+                    image: {
+                      toolbar: [
+                        "imageTextAlternative",
+                        "imageStyle:inline",
+                        "imageStyle:block",
+                        "imageStyle:side",
+                      ],
+                    },
+                  }}
+                  onChange={(_event, editor) => {
+                    handleEditorChange(editor.getData());
+                  }}
                 />
               </div>
             </div>

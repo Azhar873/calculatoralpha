@@ -1,14 +1,19 @@
 .conversionCalculator {
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 32px;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    box-shadow: var(--shadow-xl);
+    // box-shadow: var(--shadow-xl);
     width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 500px;
     color: var(--text-primary);
-    border: 1px solid var(--border-color);
+    margin: 0 auto;
+}
+
+.conversionCalculatorContainer {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    // box-shadow: var(--shadow-xl);
+    width: 100%;
+    max-width: 500px;
+    color: var(--text-primary);
+    margin: 0 auto;
 }
 
 .header {
@@ -19,7 +24,7 @@
 
     h2 {
         font-size: 2.22rem;
-        font-weight: 800;
+        font-weight: 600;
         margin-bottom: 0.5rem;
         background: var(--primary-gradient);
         -webkit-background-clip: text;
@@ -45,7 +50,8 @@
         font-weight: 600;
     }
 
-    select, input {
+    select,
+    input {
         width: 100%;
         background: #ffffff;
         border: 2px solid var(--border-color);
@@ -100,7 +106,7 @@
 
 .readonlyInput {
     background: var(--bg-secondary) !important;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--accent-purple) !important;
 }
 

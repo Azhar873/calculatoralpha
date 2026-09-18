@@ -199,6 +199,13 @@ export const seoConfig = {
       keywords:
         "scientific calculator, online calculator, math calculator, advanced calculator",
     },
+    "screenshot-calculator": {
+      title: "AI Screenshot Calculator - Solve Problems from Images",
+      description:
+        "Upload a math question, calculator screenshot, or number puzzle and get the answer instantly with AI-powered analysis.",
+      keywords:
+        "AI screenshot calculator, solve math from image, upload calculator screenshot, AI math solver",
+    },
     "fraction-calculator": {
       title: "Fraction Calculator - Add, Subtract, Multiply & Divide Fractions",
       description:

@@ -1,5 +1,17 @@
 # React + Vite
 
+## AI Screenshot Calculator
+
+The `/screenshot-calculator` page sends an uploaded image to the PHP backend. The backend calls Groq Vision and returns an editable calculator draft. Keep the Groq key server-side; do not add it to the Vite `.env` file.
+
+For local XAMPP, add this to Apache's `httpd.conf` and restart Apache:
+
+```apache
+SetEnv GROQ_API_KEY "your-groq-api-key"
+```
+
+The backend uses the `meta-llama/llama-4-maverick-17b-128e-instruct` vision model. If Groq shows that this model is unavailable for your account, replace `GROQ_MODEL` in `backend/config/groq.php` with a vision model shown in your Groq Console. The frontend expects the backend at the existing `/api` proxy, or at the URL configured by `VITE_API_URL`.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

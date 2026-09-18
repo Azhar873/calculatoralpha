@@ -1,0 +1,76 @@
+.calculator-description-editor {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.calculator-description-editor .ck-editor {
+  width: 100%;
+}
+
+.calculator-description-editor .ck-toolbar {
+  border: 0;
+  border-bottom: 1px solid #ddd;
+  border-radius: 4px 4px 0 0;
+}
+
+.calculator-description-editor .ck-editor__main {
+  min-height: 350px;
+}
+
+.calculator-description-editor .ck-editor__editable_inline {
+  min-height: 350px;
+  max-height: 600px;
+  overflow-y: auto;
+  padding: 1rem 1.25rem;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  box-shadow: none;
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.calculator-description-editor .ck-editor__editable_inline.ck-focused {
+  border: 0;
+  box-shadow: inset 0 0 0 1px #6a1b9a;
+}
+
+.calculator-description-editor .ck-content h2,
+.calculator-description-editor .ck-content h3 {
+  color: #333;
+}
+
+.calculator-description-editor .ck-content pre {
+  padding: 1rem;
+  border-radius: 4px;
+  background: #f4f6f8;
+}
+
+.calculator-description-editor .ck-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.calculator-description-editor .ck-source-editing-area textarea {
+  min-height: 350px;
+  padding: 1rem 1.25rem;
+  border: 0;
+  resize: vertical;
+  font-family: Consolas, "Courier New", monospace;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .calculator-description-editor .ck-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .calculator-description-editor .ck-editor__editable_inline,
+  .calculator-description-editor .ck-editor__main,
+  .calculator-description-editor .ck-source-editing-area textarea {
+    min-height: 280px;
+  }
+}

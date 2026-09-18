@@ -88,126 +88,128 @@ const TimeCalculator = () => {
     };
 
     return (
-        <div className={styles.timeCalculator}>
-            <div className={styles.tabs}>
-                <button
-                    className={`${styles.tab} ${mode === 'addSubtract' ? styles.active : ''}`}
-                    onClick={() => { setMode('addSubtract'); setResult(null); }}
-                >
-                    Add / Subtract Time
-                </button>
-                <button
-                    className={`${styles.tab} ${mode === 'duration' ? styles.active : ''}`}
-                    onClick={() => { setMode('duration'); setResult(null); }}
-                >
-                    Time Duration
-                </button>
-            </div>
+        <div className={styles.timeCalculatorContainer}>
+            <div className={styles.timeCalculator}>
+                <div className={styles.tabs}>
+                    <button
+                        className={`${styles.tab} ${mode === 'addSubtract' ? styles.active : ''}`}
+                        onClick={() => { setMode('addSubtract'); setResult(null); }}
+                    >
+                        Add / Subtract Time
+                    </button>
+                    <button
+                        className={`${styles.tab} ${mode === 'duration' ? styles.active : ''}`}
+                        onClick={() => { setMode('duration'); setResult(null); }}
+                    >
+                        Time Duration
+                    </button>
+                </div>
 
-            <div className={styles.controls}>
-                {mode === 'duration' ? (
-                    <>
-                        <div className={styles.inputGroup}>
-                            <label>Start Time</label>
-                            <input
-                                type="time"
-                                step="1"
-                                value={startTime}
-                                onChange={(e) => setStartTime(e.target.value)}
-                            />
-                        </div>
-                        <div className={styles.inputGroup}>
-                            <label>End Time</label>
-                            <input
-                                type="time"
-                                step="1"
-                                value={endTime}
-                                onChange={(e) => setEndTime(e.target.value)}
-                            />
-                        </div>
-                    </>
-                ) : (
-                    <>
-                        <div className={styles.inputGroup}>
-                            <label>Start Time</label>
-                            <input
-                                type="time"
-                                step="1"
-                                value={baseTime}
-                                onChange={(e) => setBaseTime(e.target.value)}
-                            />
-                        </div>
-                        <div className={styles.inputGroup}>
-                            <label>Operation</label>
-                            <select value={operation} onChange={(e) => setOperation(e.target.value)}>
-                                <option value="add">Add (+)</option>
-                                <option value="subtract">Subtract (-)</option>
-                            </select>
-                        </div>
-                        <div className={styles.inputGroup}>
-                            <label>Time to {operation === 'add' ? 'Add' : 'Subtract'}</label>
-                            <div className={styles.timeInput}>
+                <div className={styles.controls}>
+                    {mode === 'duration' ? (
+                        <>
+                            <div className={styles.inputGroup}>
+                                <label>Start Time</label>
                                 <input
-                                    type="number"
-                                    placeholder="Hrs"
-                                    value={addHours}
-                                    onChange={(e) => setAddHours(e.target.value)}
-                                    min="0"
-                                />
-                                <span>:</span>
-                                <input
-                                    type="number"
-                                    placeholder="Mins"
-                                    value={addMinutes}
-                                    onChange={(e) => setAddMinutes(e.target.value)}
-                                    min="0"
-                                />
-                                <span>:</span>
-                                <input
-                                    type="number"
-                                    placeholder="Secs"
-                                    value={addSeconds}
-                                    onChange={(e) => setAddSeconds(e.target.value)}
-                                    min="0"
+                                    type="time"
+                                    step="1"
+                                    value={startTime}
+                                    onChange={(e) => setStartTime(e.target.value)}
                                 />
                             </div>
-                        </div>
-                    </>
-                )}
-            </div>
-
-            <div className={styles.buttonGroup}>
-                <button className={styles.clearButton} onClick={clear}>Clear</button>
-                <button className={styles.calculateButton} onClick={handleCalculate}>Calculate</button>
-            </div>
-
-            {result && (
-                <div className={styles.result}>
-                    {result.type === 'duration' ? (
-                        <>
-                            <h3>Duration</h3>
-                            <div className={styles.resultDisplay}>
-                                <div className={styles.mainResult}>
-                                    {result.hours}h {result.minutes}m {result.seconds}s
-                                </div>
-                                <div className={styles.subResult}>
-                                    Total: {result.totalMinutes} minutes or {result.totalSeconds} seconds
-                                </div>
+                            <div className={styles.inputGroup}>
+                                <label>End Time</label>
+                                <input
+                                    type="time"
+                                    step="1"
+                                    value={endTime}
+                                    onChange={(e) => setEndTime(e.target.value)}
+                                />
                             </div>
                         </>
                     ) : (
                         <>
-                            <h3>Result Time</h3>
-                            <div className={styles.resultDisplay}>
-                                <div className={styles.mainResult}>{result.time}</div>
-                                <div className={styles.subResult}>
-                                    {result.rawDate.toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}
+                            <div className={styles.inputGroup}>
+                                <label>Start Time</label>
+                                <input
+                                    type="time"
+                                    step="1"
+                                    value={baseTime}
+                                    onChange={(e) => setBaseTime(e.target.value)}
+                                />
+                            </div>
+                            <div className={styles.inputGroup}>
+                                <label>Operation</label>
+                                <select value={operation} onChange={(e) => setOperation(e.target.value)}>
+                                    <option value="add">Add (+)</option>
+                                    <option value="subtract">Subtract (-)</option>
+                                </select>
+                            </div>
+                            <div className={styles.inputGroup}>
+                                <label>Time to {operation === 'add' ? 'Add' : 'Subtract'}</label>
+                                <div className={styles.timeInput}>
+                                    <input
+                                        type="number"
+                                        placeholder="Hrs"
+                                        value={addHours}
+                                        onChange={(e) => setAddHours(e.target.value)}
+                                        min="0"
+                                    />
+                                    <span>:</span>
+                                    <input
+                                        type="number"
+                                        placeholder="Mins"
+                                        value={addMinutes}
+                                        onChange={(e) => setAddMinutes(e.target.value)}
+                                        min="0"
+                                    />
+                                    <span>:</span>
+                                    <input
+                                        type="number"
+                                        placeholder="Secs"
+                                        value={addSeconds}
+                                        onChange={(e) => setAddSeconds(e.target.value)}
+                                        min="0"
+                                    />
                                 </div>
                             </div>
                         </>
                     )}
                 </div>
-            )}
+
+                <div className={styles.buttonGroup}>
+                    <button className={styles.clearButton} onClick={clear}>Clear</button>
+                    <button className={styles.calculateButton} onClick={handleCalculate}>Calculate</button>
+                </div>
+
+                {result && (
+                    <div className={styles.result}>
+                        {result.type === 'duration' ? (
+                            <>
+                                <h3>Duration</h3>
+                                <div className={styles.resultDisplay}>
+                                    <div className={styles.mainResult}>
+                                        {result.hours}h {result.minutes}m {result.seconds}s
+                                    </div>
+                                    <div className={styles.subResult}>
+                                        Total: {result.totalMinutes} minutes or {result.totalSeconds} seconds
+                                    </div>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <h3>Result Time</h3>
+                                <div className={styles.resultDisplay}>
+                                    <div className={styles.mainResult}>{result.time}</div>
+                                    <div className={styles.subResult}>
+                                        {result.rawDate.toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}
+                                    </div>
+                                </div>
+                            </>
+                        )}
+                    </div>
+                )}
+            </div>
         </div>
     );
 };

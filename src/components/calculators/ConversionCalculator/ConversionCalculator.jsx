@@ -82,63 +82,65 @@ const ConversionCalculator = () => {
     };
 
     return (
-        <div className={styles.conversionCalculator}>
-            <div className={styles.header}>
-                <h2>Unit Converter</h2>
-                <p>Fast and accurate unit conversion across multiple categories</p>
-            </div>
+        <div className={styles.conversionCalculatorContainer}>
+            <div className={styles.conversionCalculator}>
+                <div className={styles.header}>
+                    <h2>Unit Converter</h2>
+                    <p>Fast and accurate unit conversion across multiple categories</p>
+                </div>
 
-            <div className={styles.inputGroup}>
-                <label>Category</label>
-                <select
-                    value={category}
-                    onChange={handleCategoryChange}
-                >
-                    <option value="length">Length</option>
-                    <option value="weight">Weight</option>
-                    <option value="temperature">Temperature</option>
-                </select>
-            </div>
-
-            <div className={styles.conversionGrid}>
-                <div className={styles.unitBox}>
-                    <label>From</label>
-                    <input
-                        type="number"
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
-                    />
+                <div className={styles.inputGroup}>
+                    <label>Category</label>
                     <select
-                        value={fromUnit}
-                        onChange={(e) => setFromUnit(e.target.value)}
+                        value={category}
+                        onChange={handleCategoryChange}
                     >
-                        {categories[category].units.map(u => (
-                            <option key={u} value={u}>{u.charAt(0).toUpperCase() + u.slice(1)}</option>
-                        ))}
+                        <option value="length">Length</option>
+                        <option value="weight">Weight</option>
+                        <option value="temperature">Temperature</option>
                     </select>
                 </div>
 
-                <div className={styles.unitBox}>
-                    <label>To</label>
-                    <input
-                        type="text"
-                        value={outputValue}
-                        readOnly
-                        className={styles.readonlyInput}
-                    />
-                    <select
-                        value={toUnit}
-                        onChange={(e) => setToUnit(e.target.value)}
-                    >
-                        {categories[category].units.map(u => (
-                            <option key={u} value={u}>{u.charAt(0).toUpperCase() + u.slice(1)}</option>
-                        ))}
-                    </select>
-                </div>
-            </div>
+                <div className={styles.conversionGrid}>
+                    <div className={styles.unitBox}>
+                        <label>From</label>
+                        <input
+                            type="number"
+                            value={inputValue}
+                            onChange={(e) => setInputValue(e.target.value)}
+                        />
+                        <select
+                            value={fromUnit}
+                            onChange={(e) => setFromUnit(e.target.value)}
+                        >
+                            {categories[category].units.map(u => (
+                                <option key={u} value={u}>{u.charAt(0).toUpperCase() + u.slice(1)}</option>
+                            ))}
+                        </select>
+                    </div>
 
-            <div className={styles.summary}>
-                {inputValue} {fromUnit} = {outputValue} {toUnit}
+                    <div className={styles.unitBox}>
+                        <label>To</label>
+                        <input
+                            type="text"
+                            value={outputValue}
+                            readOnly
+                            className={styles.readonlyInput}
+                        />
+                        <select
+                            value={toUnit}
+                            onChange={(e) => setToUnit(e.target.value)}
+                        >
+                            {categories[category].units.map(u => (
+                                <option key={u} value={u}>{u.charAt(0).toUpperCase() + u.slice(1)}</option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+
+                <div className={styles.summary}>
+                    {inputValue} {fromUnit} = {outputValue} {toUnit}
+                </div>
             </div>
         </div>
     );

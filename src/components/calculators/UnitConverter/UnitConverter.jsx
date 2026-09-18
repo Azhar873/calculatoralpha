@@ -59,63 +59,65 @@ const UnitConverter = () => {
   const units = CATEGORIES[category].units;
 
   return (
-    <div className={styles.unitConverter}>
-      <div className={styles.header}>
-        <h2>Unit Converter</h2>
-        <p>Convert pressure, length, and volume units quickly.</p>
-      </div>
+    <div className={styles.unitConverterContainer}>
+      <div className={styles.unitConverter}>
+        <div className={styles.header}>
+          <h2>Unit Converter</h2>
+          <p>Convert pressure, length, and volume units quickly.</p>
+        </div>
 
-      <div className={styles.inputGroup}>
-        <label htmlFor="unit-converter-category">Category</label>
-        <select id="unit-converter-category" value={category} onChange={handleCategoryChange}>
-          {Object.entries(CATEGORIES).map(([value, item]) => (
-            <option key={value} value={value}>
-              {item.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className={styles.conversionGrid}>
-        <div className={styles.unitBox}>
-          <label htmlFor="unit-converter-input">From</label>
-          <input
-            id="unit-converter-input"
-            type="number"
-            value={inputValue}
-            onChange={(event) => setInputValue(event.target.value)}
-            step="any"
-          />
-          <select value={fromUnit} onChange={(event) => setFromUnit(event.target.value)}>
-            {Object.entries(units).map(([value, unit]) => (
+        <div className={styles.inputGroup}>
+          <label htmlFor="unit-converter-category">Category</label>
+          <select id="unit-converter-category" value={category} onChange={handleCategoryChange}>
+            {Object.entries(CATEGORIES).map(([value, item]) => (
               <option key={value} value={value}>
-                {unit.label}
+                {item.label}
               </option>
             ))}
           </select>
         </div>
 
-        <div className={styles.unitBox}>
-          <label htmlFor="unit-converter-output">To</label>
-          <input
-            id="unit-converter-output"
-            type="text"
-            value={outputValue}
-            readOnly
-            className={styles.readonlyInput}
-          />
-          <select value={toUnit} onChange={(event) => setToUnit(event.target.value)}>
-            {Object.entries(units).map(([value, unit]) => (
-              <option key={value} value={value}>
-                {unit.label}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
+        <div className={styles.conversionGrid}>
+          <div className={styles.unitBox}>
+            <label htmlFor="unit-converter-input">From</label>
+            <input
+              id="unit-converter-input"
+              type="number"
+              value={inputValue}
+              onChange={(event) => setInputValue(event.target.value)}
+              step="any"
+            />
+            <select value={fromUnit} onChange={(event) => setFromUnit(event.target.value)}>
+              {Object.entries(units).map(([value, unit]) => (
+                <option key={value} value={value}>
+                  {unit.label}
+                </option>
+              ))}
+            </select>
+          </div>
 
-      <div className={styles.summary}>
-        {inputValue || '0'} {units[fromUnit].label} = {outputValue || '0'} {units[toUnit].label}
+          <div className={styles.unitBox}>
+            <label htmlFor="unit-converter-output">To</label>
+            <input
+              id="unit-converter-output"
+              type="text"
+              value={outputValue}
+              readOnly
+              className={styles.readonlyInput}
+            />
+            <select value={toUnit} onChange={(event) => setToUnit(event.target.value)}>
+              {Object.entries(units).map(([value, unit]) => (
+                <option key={value} value={value}>
+                  {unit.label}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div className={styles.summary}>
+          {inputValue || '0'} {units[fromUnit].label} = {outputValue || '0'} {units[toUnit].label}
+        </div>
       </div>
     </div>
   );

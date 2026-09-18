@@ -1,19 +1,20 @@
 .dueDateCalculatorContainer {
     display: flex;
-    justify-content: center;
-    padding: 2rem;
-    min-height: 80vh;
+    // justify-content: center;
+    // padding: 20px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid var(--border-color);
 }
 
 .dueDateCalculator {
-    background: #ffffff;
-    padding: 2.5rem;
-    border-radius: 20px;
-    box-shadow: var(--shadow-xl);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    // box-shadow: var(--shadow-xl);
     width: 100%;
-    max-width: 600px;
-    border: 1px solid var(--border-color);
-    animation: slideUp 0.4s ease-out;
+    max-width: 500px;
+    color: var(--text-primary);
+    margin: 0 auto;
 
     .header {
         text-align: center;
@@ -25,7 +26,7 @@
             font-size: 2.22rem;
             color: var(--text-primary);
             margin-bottom: 0.5rem;
-            font-weight: 700;
+            font-weight: 600;
             background: var(--primary-gradient);
             -webkit-background-clip: text;
             background-clip: text;
@@ -91,7 +92,7 @@
         border: none;
         border-radius: 12px;
         font-size: 1.1rem;
-        font-weight: 700;
+        font-weight: 600;
         cursor: pointer;
         transition: all 0.2s ease;
         margin-top: 1rem;
@@ -122,7 +123,7 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 800;
+            font-weight: 600;
         }
 
         .resultGrid {
@@ -152,13 +153,13 @@
                 text-transform: uppercase;
                 letter-spacing: 1px;
                 margin-bottom: 0.75rem;
-                font-weight: 700;
+                font-weight: 600;
             }
 
             .value {
                 color: var(--text-primary);
                 font-size: 1.25rem;
-                font-weight: 800;
+                font-weight: 600;
                 font-family: 'Inter', sans-serif;
             }
 

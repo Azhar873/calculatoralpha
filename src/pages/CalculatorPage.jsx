@@ -1,8 +1,9 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import SEO from "../components/SEO/SEO";
 import NotFound from "./NotFound";
 import { useCalculators } from "../context/CalculatorsContext";
+import { submitContactForm } from "../services/api";
 import AgeCalculator from "../components/calculators/AgeCalculator/AgeCalculator";
 import AmortizationCalculator from "../components/calculators/AmortizationCalculator/AmortizationCalculator";
 import AutoLoanCalculator from "../components/calculators/AutoLoanCalculator/AutoLoanCalculator";
@@ -43,6 +44,7 @@ import RetirementCalculator from "../components/calculators/RetirementCalculator
 import SalaryCalculator from "../components/calculators/SalaryCalculator/SalaryCalculator";
 import SalesTaxCalculator from "../components/calculators/SalesTaxCalculator/SalesTaxCalculator";
 import ScientificCalculator from "../components/calculators/ScientificCalculator/ScientificCalculator";
+// import ScreenshotCalculatorPage from "./ScreenshotCalculatorPage";
 import StandardDeviationCalculator from "../components/calculators/StandardDeviationCalculator/StandardDeviationCalculator";
 import SubnetCalculator from "../components/calculators/SubnetCalculator/SubnetCalculator";
 import TimeCalculator from "../components/calculators/TimeCalculator/TimeCalculator";
@@ -91,6 +93,7 @@ const calculatorComponents = {
   "salary-calculator": SalaryCalculator,
   "sales-tax-calculator": SalesTaxCalculator,
   "scientific-calculator": ScientificCalculator,
+  "screenshot-calculator": ScreenshotCalculatorPage,
   "standard-deviation-calculator": StandardDeviationCalculator,
   "subnet-calculator": SubnetCalculator,
   "time-calculator": TimeCalculator,
@@ -115,10 +118,77 @@ const getIconUrl = (iconPath) => {
   return `${baseUrl}/uploads/icons/${iconPath}`;
 };
 
+const createDescriptionContent = (description = "") => {
+  if (typeof DOMParser === "undefined") {
+    return { html: description, headings: [] };
+  }
+
+  const document = new DOMParser().parseFromString(description, "text/html");
+  const usedIds = new Set();
+  const headings = Array.from(document.querySelectorAll("h2"))
+    .map((heading, index) => {
+      const text = heading.textContent.trim();
+      if (!text) return null;
+
+      const baseId = text
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "") || `section-${index + 1}`;
+      let id = baseId;
+      let suffix = 2;
+
+      while (usedIds.has(id)) {
+        id = `${baseId}-${suffix}`;
+        suffix += 1;
+      }
+
+      usedIds.add(id);
+      heading.id = id;
+      return { id, text };
+    })
+    .filter(Boolean);
+
+  return { html: document.body.innerHTML, headings };
+};
+
 const CalculatorPage = ({ calculatorSlug: propCalculatorSlug }) => {
   const { calculatorSlug, slug } = useParams();
   const resolvedSlug = propCalculatorSlug || calculatorSlug || slug;
   const { calculatorsData = [], isLoading, error } = useCalculators();
+  const [feedbackForm, setFeedbackForm] = useState({ email: "", message: "" });
+  const [feedbackStatus, setFeedbackStatus] = useState({
+    state: "idle",
+    message: "",
+  });
+
+  const handleFeedbackChange = (event) => {
+    const { name, value } = event.target;
+    setFeedbackForm((previous) => ({ ...previous, [name]: value }));
+  };
+
+  const handleFeedbackSubmit = async (event) => {
+    event.preventDefault();
+    setFeedbackStatus({ state: "loading", message: "Sending..." });
+
+    try {
+      const response = await submitContactForm({
+        name: "Calculator Feedback",
+        email: feedbackForm.email,
+        subject: `${calculator?.name || "Calculator"} feedback`,
+        message: feedbackForm.message,
+      });
+      setFeedbackForm({ email: "", message: "" });
+      setFeedbackStatus({
+        state: "success",
+        message: response.message || "Thank you for your feedback.",
+      });
+    } catch (feedbackError) {
+      setFeedbackStatus({
+        state: "error",
+        message: feedbackError.message || "Unable to send feedback.",
+      });
+    }
+  };
 
   const normalizeCalculatorId = (calc) =>
     (calc.path || `/${calc.slug || ""}`)
@@ -255,6 +325,10 @@ const CalculatorPage = ({ calculatorSlug: propCalculatorSlug }) => {
     calculator.heading ||
     "";
   const pageKeywords = calculator.meta_keywords || "";
+  const descriptionContent = useMemo(
+    () => createDescriptionContent(calculator.description),
+    [calculator.description],
+  );
 
   return (
     <div className="calculator-page">
@@ -277,6 +351,83 @@ const CalculatorPage = ({ calculatorSlug: propCalculatorSlug }) => {
       />
 
       <div className="calculator-page__layout">
+        <main className="calculator-page__main">
+          <div className="calculator-page__calculator-container">
+            {CalculatorComponent ? (
+              <CalculatorComponent />
+            ) : (
+              <div className="calculator-page__status">
+                Calculator component not available for this slug.
+              </div>
+            )}
+          </div>
+          <div className="calculator-page__content-row">
+            <div className="calculator-page__support-column">
+              {descriptionContent.headings.length > 0 && (
+                <nav className="calculator-page__toc" aria-label="Table of contents">
+                  <h2>Table of Content</h2>
+                  <ul>
+                    {descriptionContent.headings.map((heading) => (
+                      <li key={heading.id}>
+                        <a href={`#${heading.id}`}>{heading.text}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              )}
+              <section className="calculator-page__feedback" aria-labelledby="feedback-title">
+                <h2 id="feedback-title">Give feedback</h2>
+                {feedbackStatus.state !== "idle" && (
+                  <p
+                    className={`calculator-page__feedback-status calculator-page__feedback-status--${feedbackStatus.state}`}
+                    role="status"
+                  >
+                    {feedbackStatus.message}
+                  </p>
+                )}
+                <form onSubmit={handleFeedbackSubmit}>
+                  <label htmlFor="calculator-feedback-email">Your Email</label>
+                  <input
+                    id="calculator-feedback-email"
+                    type="email"
+                    name="email"
+                    placeholder="e.g. example@gmail.com"
+                    value={feedbackForm.email}
+                    onChange={handleFeedbackChange}
+                    required
+                  />
+                  <label htmlFor="calculator-feedback-message">
+                    What suggestions do you have for improvement?
+                  </label>
+                  <textarea
+                    id="calculator-feedback-message"
+                    name="message"
+                    value={feedbackForm.message}
+                    onChange={handleFeedbackChange}
+                    required
+                    rows={5}
+                  />
+                  <button type="submit" disabled={feedbackStatus.state === "loading"}>
+                    {feedbackStatus.state === "loading" ? "Sending..." : "Submit"}
+                  </button>
+                </form>
+              </section>
+            </div>
+
+            <div className="calculator-page__description">
+              <h2>Description</h2>
+              {calculator.description ? (
+                <div
+                  className="calculator-page__description-content"
+                  dangerouslySetInnerHTML={{ __html: descriptionContent.html }}
+                />
+              ) : (
+                <p>No description available.</p>
+              )}
+            </div>
+          </div>
+        </main>
+
         <aside className="calculator-page__sidebar">
           {relatedCalculators.length > 0 && (
             <section className="calculator-page__sidebar-section">
@@ -312,29 +463,6 @@ const CalculatorPage = ({ calculatorSlug: propCalculatorSlug }) => {
             </ul>
           </section>
         </aside>
-
-        <main className="calculator-page__main">
-          <div className="calculator-page__calculator-container">
-            {CalculatorComponent ? (
-              <CalculatorComponent />
-            ) : (
-              <div className="calculator-page__status">
-                Calculator component not available for this slug.
-              </div>
-            )}
-          </div>
-          <div className="calculator-page__description">
-            <h2>Description</h2>
-            {calculator.description ? (
-              <div
-                className="calculator-page__description-content"
-                dangerouslySetInnerHTML={{ __html: calculator.description }}
-              />
-            ) : (
-              <p>No description available.</p>
-            )}
-          </div>
-        </main>
       </div>
     </div>
   );
