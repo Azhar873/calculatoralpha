@@ -93,7 +93,7 @@ const calculatorComponents = {
   "salary-calculator": SalaryCalculator,
   "sales-tax-calculator": SalesTaxCalculator,
   "scientific-calculator": ScientificCalculator,
-  "screenshot-calculator": ScreenshotCalculatorPage,
+  // "screenshot-calculator": ScreenshotCalculatorPage,
   "standard-deviation-calculator": StandardDeviationCalculator,
   "subnet-calculator": SubnetCalculator,
   "time-calculator": TimeCalculator,
