@@ -415,7 +415,7 @@ const CalculatorPage = ({ calculatorSlug: propCalculatorSlug }) => {
             </div>
 
             <div className="calculator-page__description">
-              <h2>Description</h2>
+              <h2 className="calculator-page__description-title">Description</h2>
               {calculator.description ? (
                 <div
                   className="calculator-page__description-content"

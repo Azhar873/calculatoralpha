@@ -72,6 +72,7 @@
   background: var(--primary-color, #5844e7);
   color: var(--primary-contrast, #ffffff);
   font-size: 1rem;
+  font-weight: 500;
 }
 
 .calculator-page__sidebar-section ul {
@@ -168,6 +169,7 @@
   background: var(--primary-color, var(--accent-purple));
   color: var(--primary-contrast, #ffffff);
   font-size: 0.95rem;
+  font-weight: 500;
 }
 
 .calculator-page__toc ul {
@@ -226,7 +228,7 @@
 .calculator-page__feedback h2 {
   margin: 0 0 0.25rem;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .calculator-page__feedback form {
@@ -237,7 +239,7 @@
 .calculator-page__feedback label {
   color: var(--text-primary);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .calculator-page__feedback input,
@@ -297,15 +299,63 @@
   scroll-margin-top: 1.5rem;
 }
 
-.calculator-page__description-content ul {
+.calculator-page__description-content ul,ol {
   margin-left: 20px;
+}
+
+.calculator-page__description-content figure.table {
+  width: 100%;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.calculator-page__description-content figure.table table {
+  width: 100%;
+  min-width: 320px;
+  border-collapse: collapse;
+  border: 1px solid var(--border-color, #d9e1e8);
+  background: var(--surface-color, #ffffff);
+  text-align: left;
+}
+
+.calculator-page__description-content figure.table td,
+.calculator-page__description-content figure.table th {
+  border: 1px solid var(--border-color, #d9e1e8);
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  vertical-align: top;
+}
+
+.calculator-page__description-content figure.table thead {
+  background: var(--surface-muted, #f1f7f7);
+}
+
+.calculator-page__description-content figure.table thead th {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.calculator-page__description-content figure.table tbody tr:first-child {
+  background: var(--surface-color, #ffffff);
+}
+
+.calculator-page__description-content figure.table tr:nth-child(even) {
+  background: color-mix(in srgb, var(--surface-muted, #f1f7f7) 45%, transparent);
+}
+
+.calculator-page__description-content figure.table tbody tr:hover {
+  background: var(--surface-muted, #f1f7f7);
 }
 
 .calculator-page__meta h2,
 .calculator-page__description h2 {
   margin-top: 0;
   margin-bottom: 1rem;
-  font-weight: 500;
+  font-weight: 400;
+}
+
+.calculator-page__description .calculator-page__description-title {
+  display: none;
 }
 
 .calculator-page__meta dl {

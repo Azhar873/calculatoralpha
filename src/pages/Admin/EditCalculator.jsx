@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   getAdminCalculatorById,
@@ -35,6 +35,7 @@ const EditCalculator = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const isEditMode = Boolean(id);
+  const editorRef = useRef(null);
 
   const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({
@@ -99,12 +100,15 @@ const EditCalculator = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const description = editorRef.current?.getData() ?? formData.description;
+    const dataToSave = { ...formData, description };
+
     try {
       if (isEditMode) {
-        await updateAdminCalculator(id, formData);
+        await updateAdminCalculator(id, dataToSave);
         alert("Calculator updated successfully");
       } else {
-        await createAdminCalculator(formData);
+        await createAdminCalculator(dataToSave);
         alert("Calculator created successfully");
         navigate("/admin/calculators");
       }
@@ -272,6 +276,9 @@ const EditCalculator = () => {
                 <CKEditor
                   editor={ClassicEditor}
                   data={formData.description || ""}
+                  onReady={(editor) => {
+                    editorRef.current = editor;
+                  }}
                   config={{
                     licenseKey:
                       import.meta.env.VITE_CKEDITOR_LICENSE_KEY || "GPL",
