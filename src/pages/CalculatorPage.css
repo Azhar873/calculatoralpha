@@ -377,6 +377,12 @@
   line-height: 1.75;
 }
 
+.calculator-page__math {
+  margin: 1.25rem 0;
+  overflow-x: auto;
+  text-align: center;
+}
+
 @media (max-width: 840px) {
   .calculator-page__layout {
     grid-template-columns: 1fr;

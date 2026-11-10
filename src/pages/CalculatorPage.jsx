@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import SEO from "../components/SEO/SEO";
 import NotFound from "./NotFound";
@@ -118,12 +118,65 @@ const getIconUrl = (iconPath) => {
   return `${baseUrl}/uploads/icons/${iconPath}`;
 };
 
-const createDescriptionContent = (description = "") => {
+let mathJaxPromise;
+
+const loadMathJax = () => {
+  if (window.MathJax?.typesetPromise) {
+    return Promise.resolve(window.MathJax);
+  }
+  if (mathJaxPromise) return mathJaxPromise;
+
+  window.MathJax = {
+    tex: {
+      inlineMath: [["\\(", "\\)"]],
+      displayMath: [["\\[", "\\]"]],
+    },
+    startup: { typeset: false },
+  };
+
+  mathJaxPromise = new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js";
+    script.async = true;
+    script.onload = () => resolve(window.MathJax);
+    script.onerror = () => {
+      mathJaxPromise = null;
+      script.remove();
+      reject(new Error("Unable to load MathJax"));
+    };
+    document.head.appendChild(script);
+  });
+
+  return mathJaxPromise;
+};
+
+const createDescriptionContent = (description = "", renderMath = false) => {
   if (typeof DOMParser === "undefined") {
     return { html: description, headings: [] };
   }
 
   const document = new DOMParser().parseFromString(description, "text/html");
+  if (renderMath) {
+    document.querySelectorAll("code").forEach((code) => {
+      if (/\\\(|\\\[/.test(code.textContent)) {
+        code.replaceWith(document.createTextNode(code.textContent));
+      }
+    });
+
+    document.querySelectorAll("pre").forEach((codeBlock) => {
+      const equation = codeBlock.textContent.trim();
+      if (!equation) return;
+
+      const mathBlock = document.createElement("div");
+      mathBlock.className = "calculator-page__math";
+      mathBlock.textContent =
+        equation.startsWith("\\[") && equation.endsWith("\\]")
+          ? equation
+          : `\\[${equation}\\]`;
+      codeBlock.replaceWith(mathBlock);
+    });
+  }
+
   const usedIds = new Set();
   const headings = Array.from(document.querySelectorAll("h2"))
     .map((heading, index) => {
@@ -249,6 +302,41 @@ const CalculatorPage = ({ calculatorSlug: propCalculatorSlug }) => {
       ),
     [calculatorsData, matchesCalculatorSlug, resolvedSlug],
   );
+  const descriptionRef = useRef(null);
+  const descriptionHasMath = Boolean(
+    calculator?.description?.includes("\\(") ||
+      calculator?.description?.includes("\\["),
+  );
+  const mathjaxEnabled =
+    Number(calculator?.mathjax) === 1 || descriptionHasMath;
+  const descriptionContent = useMemo(
+    () => createDescriptionContent(calculator?.description, mathjaxEnabled),
+    [calculator?.description, mathjaxEnabled],
+  );
+
+  useEffect(() => {
+    if (!mathjaxEnabled || !descriptionRef.current) return undefined;
+
+    let cancelled = false;
+    const contentElement = descriptionRef.current;
+
+    loadMathJax()
+      .then((mathJax) => {
+        if (cancelled || !contentElement?.isConnected) return;
+        mathJax.typesetClear?.([contentElement]);
+        return mathJax.typesetPromise([contentElement]);
+      })
+      .catch((error) => {
+        console.error("Failed to render calculator equations", error);
+      });
+
+    return () => {
+      cancelled = true;
+      if (window.MathJax?.typesetClear && contentElement) {
+        window.MathJax.typesetClear([contentElement]);
+      }
+    };
+  }, [descriptionContent.html, mathjaxEnabled]);
 
   if (isLoading) {
     return (
@@ -325,10 +413,6 @@ const CalculatorPage = ({ calculatorSlug: propCalculatorSlug }) => {
     calculator.heading ||
     "";
   const pageKeywords = calculator.meta_keywords || "";
-  const descriptionContent = useMemo(
-    () => createDescriptionContent(calculator.description),
-    [calculator.description],
-  );
 
   return (
     <div className="calculator-page">
@@ -418,6 +502,7 @@ const CalculatorPage = ({ calculatorSlug: propCalculatorSlug }) => {
               <h2 className="calculator-page__description-title">Description</h2>
               {calculator.description ? (
                 <div
+                  ref={descriptionRef}
                   className="calculator-page__description-content"
                   dangerouslySetInnerHTML={{ __html: descriptionContent.html }}
                 />

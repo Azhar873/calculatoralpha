@@ -218,10 +218,10 @@ const EditCalculator = () => {
                   id="calc_mathjax"
                   type="checkbox"
                   name="mathjax"
-                  checked={formData.mathjax === 1}
+                  checked={Number(formData.mathjax) === 1}
                   onChange={handleChange}
                 />
-                Mathjax
+                MathJax (render LaTeX formulas and code blocks)
               </label>
               <label
                 htmlFor="calc_active"
