@@ -59,7 +59,7 @@ const PipeVolumeCalculator = () => {
     <div className={styles.pipeWeightCalculatorContainer}>
       <div className={styles.pipeWeightCalculator}>
         <div className={styles.header}>
-          <h2>Pipe Volume Calculator</h2>
+          <h1>Pipe Volume Calculator</h1>
           <p>Calculate the internal volume of a cylindrical pipe.</p>
         </div>
 

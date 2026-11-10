@@ -127,7 +127,7 @@ const BodyFatCalculator = () => {
         <div className={styles.bodyFatCalculatorContainer}>
             <div className={styles.bodyFatCalculator}>
                 <div className={styles.header}>
-                    <h2>Body Fat Calculator</h2>
+                    <h1>Body Fat Calculator</h1>
                     <p>Estimate your body fat percentage using the U.S. Navy Method</p>
                 </div>
 

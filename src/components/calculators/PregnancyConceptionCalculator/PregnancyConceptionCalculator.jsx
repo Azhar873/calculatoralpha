@@ -69,7 +69,7 @@ const PregnancyConceptionCalculator = () => {
         <div className={styles.pregnancyConceptionCalculatorContainer}>
             <div className={styles.pregnancyConceptionCalculator}>
                 <div className={styles.header}>
-                    <h2>Conception Calculator</h2>
+                    <h1>Conception Calculator</h1>
                     <p>Find your most fertile days to increase chances of conception</p>
                 </div>
 

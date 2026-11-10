@@ -82,7 +82,7 @@ const SubnetCalculator = () => {
         <div className={styles.subnetCalculatorContainer}>
             <div className={styles.subnetCalculator}>
                 <div className={styles.header}>
-                    <h2>Subnet Calculator</h2>
+                    <h1>Subnet Calculator</h1>
                     <p>Lookup subnet masks, network addresses, and usable host ranges</p>
                 </div>
 

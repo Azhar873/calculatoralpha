@@ -56,7 +56,7 @@ const GradeCalculator = () => {
         <div className={styles.gradeCalculatorContainer}>
             <div className={styles.gradeCalculator}>
                 <div className={styles.header}>
-                    <h2>Grade Calculator</h2>
+                    <h1>Grade Calculator</h1>
                     <p>Calculate your class grade by entering assignments and weights</p>
                 </div>
 

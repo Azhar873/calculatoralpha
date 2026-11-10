@@ -73,7 +73,7 @@ const BMRCalculator = () => {
         <div className={styles.bmrCalculatorContainer}>
             <div className={styles.bmrCalculator}>
                 <div className={styles.header}>
-                    <h2>BMR Calculator</h2>
+                    <h1>BMR Calculator</h1>
                     <p>Calculate your Basal Metabolic Rate using the Mifflin-St Jeor equation</p>
                 </div>
 

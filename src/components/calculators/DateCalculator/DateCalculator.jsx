@@ -84,7 +84,7 @@ const DateCalculator = () => {
         <div className={styles.dateCalculatorContainer}>
             <div className={styles.dateCalculator}>
                 <div className={styles.header}>
-                    <h2>Date Calculator</h2>
+                    <h1>Date Calculator</h1>
                     <p>Calculate difference between dates or add/subtract time from a date</p>
                 </div>
                 <div className={styles.tabs}>

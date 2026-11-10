@@ -83,7 +83,7 @@ const PipeCostEstimator = () => {
     <div className={styles.pipeWeightCalculatorContainer}>
       <div className={styles.pipeWeightCalculator}>
         <div className={styles.header}>
-          <h2>Pipe Cost Estimator</h2>
+          <h1>Pipe Cost Estimator</h1>
           <p>Estimate pipe weight and material cost for your project.</p>
         </div>
 

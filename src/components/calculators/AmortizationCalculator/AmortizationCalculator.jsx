@@ -60,7 +60,7 @@ const AmortizationCalculator = () => {
         <div className={styles.amortizationCalculatorContainer}>
             <div className={styles.amortizationCalculator}>
                 <div className={styles.header}>
-                    <h2>Amortization Calculator</h2>
+                    <h1>Amortization Calculator</h1>
                     <p>Calculate your amortization schedule</p>
                 </div>
 

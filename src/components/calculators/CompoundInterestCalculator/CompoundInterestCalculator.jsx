@@ -38,7 +38,7 @@ const CompoundInterestCalculator = () => {
         <div className={styles.compoundInterestCalculatorContainer}>
             <div className={styles.compoundInterestCalculator}>
                 <div className={styles.header}>
-                    <h2>Compound Interest Calculator</h2>
+                    <h1>Compound Interest Calculator</h1>
                     <p>Calculate compound interest over time</p>
                 </div>
 

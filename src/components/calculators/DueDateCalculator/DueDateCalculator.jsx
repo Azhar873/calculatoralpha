@@ -62,7 +62,7 @@ const DueDateCalculator = () => {
         <div className={styles.dueDateCalculatorContainer}>
             <div className={styles.dueDateCalculator}>
                 <div className={styles.header}>
-                    <h2>Due Date Calculator</h2>
+                    <h1>Due Date Calculator</h1>
                     <p>Estimate your baby's due date based on your last period</p>
                 </div>
 

@@ -77,7 +77,7 @@ const CalorieCalculator = () => {
         <div className={styles.calorieCalculatorContainer}>
             <div className={styles.calorieCalculator}>
                 <div className={styles.header}>
-                    <h2>Calorie Calculator</h2>
+                    <h1>Calorie Calculator</h1>
                     <p>Calculate your daily calorie needs (TDEE)</p>
                 </div>
 

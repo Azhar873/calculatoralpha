@@ -42,7 +42,7 @@ const PasswordGenerator = () => {
         <div className={styles.passwordGeneratorContainer}>
             <div className={styles.passwordGenerator}>
                 <div className={styles.header}>
-                    <h2>Password Generator</h2>
+                    <h1>Password Generator</h1>
                     <p>Create strong and secure passwords instantly</p>
                 </div>
 

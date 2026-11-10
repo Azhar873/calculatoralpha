@@ -54,7 +54,7 @@ const PregnancyCalculator = () => {
         <div className={styles.pregnancyCalculatorContainer}>
             <div className={styles.pregnancyCalculator}>
                 <div className={styles.header}>
-                    <h2>Pregnancy Calculator</h2>
+                    <h1>Pregnancy Calculator</h1>
                     <p>Estimate your due date and current stage of pregnancy</p>
                 </div>
 

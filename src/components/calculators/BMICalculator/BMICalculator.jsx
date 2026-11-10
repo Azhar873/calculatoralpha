@@ -64,7 +64,7 @@ const BMICalculator = () => {
         <div className={styles.bmiCalculatorContainer}>
             <div className={styles.bmiCalculator}>
                 <div className={styles.header}>
-                    <h2>BMI Calculator</h2>
+                    <h1>BMI Calculator</h1>
                     <p>Calculate your Body Mass Index</p>
                 </div>
 

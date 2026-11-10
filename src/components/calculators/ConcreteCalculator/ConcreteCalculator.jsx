@@ -51,7 +51,7 @@ const ConcreteCalculator = () => {
         <div className={styles.concreteCalculatorContainer}>
             <div className={styles.concreteCalculator}>
                 <div className={styles.header}>
-                    <h2>Concrete Calculator</h2>
+                    <h1>Concrete Calculator</h1>
                     <p>Calculate the volume and number of bags needed for your project</p>
                 </div>
 

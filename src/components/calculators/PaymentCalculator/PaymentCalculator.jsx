@@ -33,7 +33,7 @@ const PaymentCalculator = () => {
         <div className={styles.paymentCalculatorContainer}>
             <div className={styles.paymentCalculator}>
                 <div className={styles.header}>
-                    <h2>Payment Calculator</h2>
+                    <h1>Payment Calculator</h1>
                     <p>Calculate your monthly loan payments</p>
                 </div>
 

@@ -40,7 +40,7 @@ const LoanCalculator = () => {
         <div className={styles.loanCalculatorContainer}>
             <div className={styles.loanCalculator}>
                 <div className={styles.header}>
-                    <h2>Loan Calculator</h2>
+                    <h1>Loan Calculator</h1>
                     <p>Calculate your monthly loan payments</p>
                 </div>
 

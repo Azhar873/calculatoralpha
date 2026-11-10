@@ -78,7 +78,7 @@ const GPACalculator = () => {
         <div className={styles.gpaCalculatorContainer}>
             <div className={styles.gpaCalculator}>
                 <div className={styles.header}>
-                    <h2>GPA Calculator</h2>
+                    <h1>GPA Calculator</h1>
                     <p>Calculate your semester or cumulative GPA easily</p>
                 </div>
 

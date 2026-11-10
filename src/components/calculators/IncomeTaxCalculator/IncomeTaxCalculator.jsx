@@ -52,7 +52,7 @@ const IncomeTaxCalculator = () => {
         <div className={styles.incomeTaxCalculatorContainer}>
             <div className={styles.incomeTaxCalculator}>
                 <div className={styles.header}>
-                    <h2>Income Tax Calculator</h2>
+                    <h1>Income Tax Calculator</h1>
                     <p>Estimate your annual income tax</p>
                 </div>
 

@@ -282,7 +282,7 @@ function ScientificCalculator() {
         <div className={styles.scientificCalculatorContainer}>
             <div className={styles.scientificCalculatorSimple}>
                 <div className={styles.calculatorHeader}>
-                    <h2>Scientific Calculator</h2>
+                    <h1>Scientific Calculator</h1>
                     <p className={styles.calculatorDescription}>Standard scientific functions and operations</p>
                 </div>
                 <div className={styles.calculatorBody}>

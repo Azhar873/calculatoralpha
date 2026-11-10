@@ -91,7 +91,7 @@ const PaceCalculator = () => {
         <div className={styles.paceCalculatorContainer}>
             <div className={styles.paceCalculator}>
                 <div className={styles.header}>
-                    <h2>Running Pace Calculator</h2>
+                    <h1>Running Pace Calculator</h1>
                     <p>Track your performance and plan your race</p>
                 </div>
 

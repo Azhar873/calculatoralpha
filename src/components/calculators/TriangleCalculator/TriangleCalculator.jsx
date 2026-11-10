@@ -94,7 +94,7 @@ function TriangleCalculator() {
     return (
         <div className={styles.triangleCalculator}>
             <div className={styles.calculatorCard}>
-                <h2>Triangle Calculator</h2>
+                <h1>Triangle Calculator</h1>
 
                 <div className={styles.modeSelect}>
                     <select value={mode} onChange={handleModeChange}>

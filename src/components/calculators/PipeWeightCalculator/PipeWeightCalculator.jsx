@@ -84,7 +84,7 @@ const PipeWeightCalculator = () => {
     <div className={styles.pipeWeightCalculatorContainer}>
       <div className={styles.pipeWeightCalculator}>
         <div className={styles.header}>
-          <h2>Pipe Weight Calculator</h2>
+          <h1>Pipe Weight Calculator</h1>
           <p>Estimate pipe weight based on diameter, wall thickness, length, and material.</p>
         </div>
 

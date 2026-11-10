@@ -31,7 +31,7 @@ const InterestCalculator = () => {
         <div className={styles.interestCalculatorContainer}>
             <div className={styles.interestCalculator}>
                 <div className={styles.header}>
-                    <h2>Interest Calculator</h2>
+                    <h1>Interest Calculator</h1>
                     <p>Calculate your simple interest</p>
                 </div>
 

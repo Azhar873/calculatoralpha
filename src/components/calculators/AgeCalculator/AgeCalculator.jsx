@@ -39,7 +39,7 @@ const AgeCalculator = () => {
         <div className={styles.ageCalculatorContainer}>
             <div className={styles.ageCalculator}>
                 <div className={styles.header}>
-                    <h2>Age Calculator</h2>
+                    <h1>Age Calculator</h1>
                     <p>Calculate your exact age in years, months, and days</p>
                 </div>
                 <div className={styles.controls}>

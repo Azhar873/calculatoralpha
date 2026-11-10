@@ -67,7 +67,7 @@ const FinanceCalculator = () => {
         <div className={styles.financeCalculatorContainer}>
             <div className={styles.financeCalculator}>
                 <div className={styles.header}>
-                    <h2>Finance Calculator</h2>
+                    <h1>Finance Calculator</h1>
                     <p>Calculate monthly savings needed to reach your goal</p>
                 </div>
 

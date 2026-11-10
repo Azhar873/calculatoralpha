@@ -57,7 +57,7 @@ const AutoLoanCalculator = () => {
         <div className={styles.loanCalculatorContainer}>
             <div className={styles.loanCalculator}>
                 <div className={styles.header}>
-                    <h2>Auto Loan Calculator</h2>
+                    <h1>Auto Loan Calculator</h1>
                     <p>Calculate your monthly auto loan payments</p>
                 </div>
 

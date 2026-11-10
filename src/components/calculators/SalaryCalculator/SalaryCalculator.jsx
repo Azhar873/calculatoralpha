@@ -73,7 +73,7 @@ const SalaryCalculator = () => {
         <div className={styles.salaryCalculatorContainer}>
             <div className={styles.salaryCalculator}>
                 <div className={styles.header}>
-                    <h2>Salary Calculator</h2>
+                    <h1>Salary Calculator</h1>
                     <p>Convert your salary across different time periods</p>
                 </div>
 

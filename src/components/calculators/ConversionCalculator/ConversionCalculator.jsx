@@ -85,7 +85,7 @@ const ConversionCalculator = () => {
         <div className={styles.conversionCalculatorContainer}>
             <div className={styles.conversionCalculator}>
                 <div className={styles.header}>
-                    <h2>Unit Converter</h2>
+                    <h1>Unit Converter</h1>
                     <p>Fast and accurate unit conversion across multiple categories</p>
                 </div>
 

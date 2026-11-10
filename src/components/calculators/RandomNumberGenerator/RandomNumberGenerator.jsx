@@ -31,7 +31,7 @@ const RandomNumberGenerator = () => {
     return (
         <div className={styles.Numbercontainer}>
             <div className={styles.container}>
-                <h2>Random Number Generator</h2>
+                <h1>Random Number Generator</h1>
 
                 <div className={styles.controls}>
                     <div className={styles.inputGroup}>

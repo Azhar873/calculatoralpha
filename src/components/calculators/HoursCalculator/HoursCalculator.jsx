@@ -108,7 +108,7 @@ const HoursCalculator = () => {
         <div className={styles.hoursCalculatorContainer}>
             <div className={styles.hoursCalculator}>
                 <div className={styles.header}>
-                    <h2>Hours Calculator</h2>
+                    <h1>Hours Calculator</h1>
                     <p>Calculate total work hours or add/subtract time durations</p>
                 </div>
                 <div className={styles.tabs}>

@@ -69,7 +69,7 @@ function PercentageCalculator() {
     return (
         <div className={styles.percentageCalculator}>
             <div className={styles.calculatorCard}>
-                <h2>Percentage Calculator</h2>
+                <h1>Percentage Calculator</h1>
 
                 <div className={styles.modeSelect}>
                     <select value={mode} onChange={handleModeChange}>

@@ -56,7 +56,7 @@ const InvestmentCalculator = () => {
         <div className={styles.investmentCalculatorContainer}>
             <div className={styles.investmentCalculator}>
                 <div className={styles.header}>
-                    <h2>Investment Calculator</h2>
+                    <h1>Investment Calculator</h1>
                     <p>Calculate your investment growth over time</p>
                 </div>
 

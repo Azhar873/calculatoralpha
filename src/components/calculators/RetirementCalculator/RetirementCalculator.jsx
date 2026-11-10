@@ -62,7 +62,7 @@ const RetirementCalculator = () => {
         <div className={styles.retirementCalculatorContainer}>
             <div className={styles.retirementCalculator}>
                 <div className={styles.header}>
-                    <h2>Retirement Calculator</h2>
+                    <h1>Retirement Calculator</h1>
                     <p>Plan your financial future</p>
                 </div>
 

@@ -58,7 +58,7 @@ const PipeScheduleLookup = () => {
     <div className={styles.pipeWeightCalculatorContainer}>
       <div className={styles.pipeWeightCalculator}>
         <div className={styles.header}>
-          <h2>Pipe Schedule Lookup</h2>
+          <h1>Pipe Schedule Lookup</h1>
           <p>Find standard pipe dimensions by nominal size and schedule.</p>
         </div>
 

@@ -34,7 +34,7 @@ const InflationCalculator = () => {
         <div className={styles.inflationCalculatorContainer}>
             <div className={styles.inflationCalculator}>
                 <div className={styles.header}>
-                    <h2>Inflation Calculator</h2>
+                    <h1>Inflation Calculator</h1>
                     <p>Calculate future value based on inflation</p>
                 </div>
 

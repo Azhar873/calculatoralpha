@@ -82,7 +82,7 @@ const IdealWeightCalculator = () => {
         <div className={styles.idealWeightCalculatorContainer}>
             <div className={styles.idealWeightCalculator}>
                 <div className={styles.header}>
-                    <h2>Ideal Weight Calculator</h2>
+                    <h1>Ideal Weight Calculator</h1>
                     <p>Find your ideal weight using multiple popular formulas</p>
                 </div>
 

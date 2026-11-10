@@ -83,7 +83,7 @@ function FractionCalculator() {
     return (
         <div className={styles.fractionCalculator}>
             <div className={styles.calculatorCard}>
-                <h2>Fraction Calculator</h2>
+                <h1>Fraction Calculator</h1>
                 <div className={styles.inputSection}>
                     <div className={styles.fractionInput}>
                         <input

@@ -46,7 +46,7 @@ const SalesTaxCalculator = () => {
         <div className={styles.salesTaxCalculatorContainer}>
             <div className={styles.salesTaxCalculator}>
                 <div className={styles.header}>
-                    <h2>Sales Tax Calculator</h2>
+                    <h1>Sales Tax Calculator</h1>
                     <p>Calculate sales tax and total price</p>
                 </div>
 

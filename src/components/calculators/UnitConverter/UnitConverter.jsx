@@ -62,7 +62,7 @@ const UnitConverter = () => {
     <div className={styles.unitConverterContainer}>
       <div className={styles.unitConverter}>
         <div className={styles.header}>
-          <h2>Unit Converter</h2>
+          <h1>Unit Converter</h1>
           <p>Convert pressure, length, and volume units quickly.</p>
         </div>
 
