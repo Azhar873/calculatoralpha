@@ -27,6 +27,7 @@ const EditPage = () => {
     page_type: "default",
     meta_title: "",
     meta_description: "",
+    meta_keywords: "",
     description: "",
     show_in_header: false,
     footer_text: "",
@@ -55,6 +56,7 @@ const EditPage = () => {
             page_type: page.page_type || "default",
             meta_title: page.meta_title || "",
             meta_description: page.meta_description || "",
+            meta_keywords: page.meta_keywords || "",
             description: page.description || "",
             show_in_header: Boolean(Number(page.show_in_header)),
             footer_text: page.footer_text || "",
@@ -103,6 +105,7 @@ const EditPage = () => {
         meta_title: "Contact Us - Calculatoralpha",
         meta_description:
           "Get in touch with Calculatoralpha for support, feedback, and partnership inquiries.",
+        meta_keywords: "",
         description:
           "<p>Please use the form below to contact our team directly.</p>",
         show_in_header: false,
@@ -549,6 +552,19 @@ const EditPage = () => {
                 value={formData.meta_description}
                 onChange={handleChange}
                 rows={4}
+              />
+            </div>
+
+            <div className="admin-form-group">
+              <label htmlFor="page_meta_keywords">Meta Keywords</label>
+              <textarea
+                id="page_meta_keywords"
+                name="meta_keywords"
+                className="admin-form-control"
+                value={formData.meta_keywords}
+                onChange={handleChange}
+                rows={3}
+                placeholder="keyword one, keyword two, keyword three"
               />
             </div>
 
