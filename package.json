@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node tools/sync-sitemap.js",
     "lint": "eslint .",
     "preview": "vite preview",
-    "build-with-sitemap": "vite build"
+    "build-with-sitemap": "npm run build"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-react": "^11.2.0",

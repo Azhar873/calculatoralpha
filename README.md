@@ -14,6 +14,10 @@ The backend uses the `meta-llama/llama-4-maverick-17b-128e-instruct` vision mode
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## Sitemap builds
+
+`npm run build` fetches the latest sitemap XML from the backend database API and writes it to `dist/sitemap.xml`. The API must be reachable during the build; the build fails rather than publishing an outdated sitemap if the request fails.
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
